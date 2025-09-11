@@ -8,6 +8,7 @@ import About from "./sections/About";
 import Works from "./sections/Works";
 import ContactSummary from "./sections/ContactSummary";
 import Contact from "./sections/Contact";
+import CustomCursor from "./components/CustomCursor";
 
 const App = () => {
   const [isReady, setIsReady] = useState(false);
@@ -57,6 +58,7 @@ const App = () => {
         <Works />
         <ContactSummary />
         <Contact />
+        <CustomCursor />
       </div>
     </ReactLenis>
   );

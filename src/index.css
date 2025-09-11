@@ -116,6 +116,7 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden;
   font-family: var(--font-amiamie);
+  /* Keep default cursor visible as requested by user */
 }
 
 @utility clip-path {

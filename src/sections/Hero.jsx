@@ -26,10 +26,10 @@ give you an unfair advantage`;
         >
           <iframe 
             src='https://my.spline.design/threadsfeatureheaderanimation-Jo4MNuTQ2hXTsjuncOuQ2A8B/' 
-            frameborder='0' 
+            frameBorder='0' 
             width='100%' 
             height='100%' 
-            lazy="loading"
+            loading="lazy"
           />
         </figure>
       )}
