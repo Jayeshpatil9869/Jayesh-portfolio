@@ -1,9 +1,10 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import { projects } from "../constants";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { applyImageEffect } from "../utils/sheryEffects";
 
 const Works = () => {
   const overlayRefs = useRef([]);
@@ -99,6 +100,25 @@ const Works = () => {
     moveY.current(mouse.current.y);
   };
 
+  // Apply Shery.js image effect to portfolio thumbnails
+  useEffect(() => {
+    // Apply image effect to mobile preview images
+    applyImageEffect(".portfolio-img", {
+      style: 2, // Liquid distortion effect
+      config: {
+        noiseDetail: 1.2,
+        distortionAmount: 2,
+        speed: 1,
+        scaleDist: 0.2,
+      },
+    });
+
+    // Cleanup function
+    return () => {
+      // Any cleanup if needed
+    };
+  }, []);
+
   return (
     <section id="work" className="flex flex-col min-h-screen">
       <AnimatedHeaderSection
@@ -158,7 +178,7 @@ const Works = () => {
               <img
                 src={project.image}
                 alt={`${project.name}-image`}
-                className="absolute bg-center px-14 rounded-xl"
+                className="absolute bg-center px-14 rounded-xl portfolio-img"
               />
             </div>
           </div>
@@ -172,7 +192,7 @@ const Works = () => {
             <img
               src={projects[currentIndex].image}
               alt="preview"
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full portfolio-img"
             />
           )}
         </div>

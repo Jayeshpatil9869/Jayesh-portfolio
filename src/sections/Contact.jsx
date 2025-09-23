@@ -3,6 +3,8 @@ import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import Marquee from "../components/Marquee";
 import { socials } from "../constants";
 import gsap from "gsap";
+import { useEffect } from "react";
+import { applyMagnetEffect } from "../utils/sheryEffects";
 
 const Contact = () => {
   const text = `Got a question, how or project Idea?
@@ -26,6 +28,19 @@ const Contact = () => {
         trigger: ".social-link",
       },
     });
+  }, []);
+
+  // Apply magnet effect to social media links
+  useEffect(() => {
+    applyMagnetEffect(".magnet-btn", {
+      ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+      duration: 1,
+    });
+
+    // Cleanup function
+    return () => {
+      // Any cleanup if needed
+    };
   }, []);
   return (
     <section
@@ -64,7 +79,7 @@ const Contact = () => {
                   <a
                     key={index}
                     href={social.href}
-                    className="text-xs leading-loose tracking-wides uppercase md:text-sm hover:text-white/80 transition-colors duration-200 cursor-hover"
+                    className="text-xs leading-loose tracking-wides uppercase md:text-sm hover:text-white/80 transition-colors duration-200 cursor-hover magnet-btn"
                   >
                     {"{ "}
                     {social.name}

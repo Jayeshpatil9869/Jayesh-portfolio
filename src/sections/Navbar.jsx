@@ -3,6 +3,7 @@ import { socials } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Link } from "react-scroll";
+import { applyMagnetEffect } from "../utils/sheryEffects";
 
 const Navbar = () => {
   const navRef = useRef(null);
@@ -85,6 +86,18 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Apply magnet effect to navigation links and social media links
+  useEffect(() => {
+    // Apply only after the menu is opened
+    if (isOpen) {
+      // Apply to navigation links
+      applyMagnetEffect(".magnet-btn", {
+        ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+        duration: 1,
+      });
+    }
+  }, [isOpen]);
+
   const toggleMenu = () => {
     if (isOpen) {
       tl.current.reverse();
@@ -106,7 +119,7 @@ const Navbar = () => {
             (section, index) => (
               <div key={index} ref={(el) => (linksRef.current[index] = el)}>
                 <Link
-                  className="transition-all duration-300 cursor-pointer hover:text-white cursor-hover"
+                  className="transition-all duration-300 cursor-pointer hover:text-white cursor-hover magnet-btn"
                   to={`${section}`}
                   smooth
                   offset={0}
@@ -135,7 +148,7 @@ const Navbar = () => {
                 <a
                   key={index}
                   href={social.href}
-                  className="text-[13px] leading-loose tracking-widest uppercase hover:text-white transition-colors duration-300 cursor-hover"
+                  className="text-[13px] leading-loose tracking-widest uppercase hover:text-white transition-colors duration-300 cursor-hover magnet-btn"
                 >
                   {"{ "}
                   {social.name}
