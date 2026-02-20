@@ -141,7 +141,7 @@ export const projects = [
     name: "Gaushala Management Dashboard",
     description:
       "A comprehensive management dashboard developed with React and Tailwind CSS for cow shelters (Gaushalas). It enables efficient tracking of cows, donations, staff, and daily resources.",
-    href: "https://github.com/Mahendra111111/Gaushala-Management-System",
+    href: "https://gaushala-management-system.jayeshbpatil.com/",
     image: "/images/Gaushala.jpg",
     bgImage: "/images/Gaushala.jpg",
     frameworks: [
