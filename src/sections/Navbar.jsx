@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { socials } from "../constants";
+import { socials, RESUME_URL } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Link } from "react-scroll";
@@ -124,14 +124,60 @@ const Navbar = () => {
             (section, index) => (
               <div key={index} ref={(el) => (linksRef.current[index] = el)}>
                 {section === "resume" ? (
-                  <a
-                    href="/assets/Cv/Jayesh_Resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-all duration-300 cursor-pointer text-[#cfa355] hover:text-white cursor-hover block"
-                  >
-                    {section}
-                  </a>
+                  <div className="flex flex-col xl:flex-row xl:items-center gap-2 xl:gap-8">
+                    <a
+                      href={`#${section}`}
+                      className="transition-all duration-300 cursor-pointer text-[#cfa355] hover:text-white cursor-hover block"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        toggleMenu(); // Close menu on click
+                        const el = document.getElementById(section);
+                        if (el) {
+                          el.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                    >
+                      {section}
+                    </a>
+                    <div className="flex gap-4 text-sm md:text-lg tracking-widest uppercase font-light mt-1 xl:mt-0 xl:pt-4 text-white/50">
+                      <a
+                        href={RESUME_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-[#cfa355] transition-colors cursor-hover"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.open(`${RESUME_URL}?t=${Date.now()}`, '_blank', 'noopener,noreferrer');
+                        }}
+                      >
+                        [ VIEW ]
+                      </a>
+                      <button
+                        onClick={async (e) => {
+                          e.preventDefault();
+                          try {
+                            const response = await fetch(`${RESUME_URL}?t=${new Date().getTime()}`);
+                            if (!response.ok) throw new Error("Network response was not ok");
+                            const blob = await response.blob();
+                            const url = window.URL.createObjectURL(blob);
+                            const link = document.createElement("a");
+                            link.href = url;
+                            link.setAttribute("download", "Jayesh_Patil_Resume.pdf");
+                            document.body.appendChild(link);
+                            link.click();
+                            link.parentNode.removeChild(link);
+                            window.URL.revokeObjectURL(url);
+                          } catch (error) {
+                            console.error("Resume download failed:", error);
+                            window.open(RESUME_URL, "_blank");
+                          }
+                        }}
+                        className="hover:text-[#cfa355] transition-colors cursor-hover uppercase"
+                      >
+                        [ DOWNLOAD ]
+                      </button>
+                    </div>
+                  </div>
                 ) : (
                   <a
                     href={`#${section}`}

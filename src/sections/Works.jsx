@@ -119,12 +119,6 @@ const Works = () => {
     };
   }, []);
 
-  // Handle project click to open link
-  const handleProjectClick = (href) => {
-    if (href && href.trim() !== "") {
-      window.open(href, "_blank");
-    }
-  };
 
   return (
     <section id="work" className="flex flex-col min-h-screen">

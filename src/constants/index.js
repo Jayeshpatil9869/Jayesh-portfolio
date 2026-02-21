@@ -1,4 +1,6 @@
 // index.js
+export const RESUME_URL = "https://wrcoiavqijnltexejxob.supabase.co/storage/v1/object/public/resume/Jayesh%20Patil.pdf";
+
 // export const servicesData = [
 //   {
 //     title: "FullStack Development",
@@ -260,7 +262,7 @@ export const socials = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/jayesh-patil01/" },
   { name: "GitHub", href: "https://github.com/Jayeshpatil9869" },
   { name: "WhatsApp", href: "https://wa.me/919209389015" },
-  { name: "Codepen", href: "https://codepen.io/jayeshpatil1553" },
+  { name: "Codepen", href: "https://codepen.io/jayeshpatil" },
   {
     name: "Instagram",
     href: "https://www.instagram.com/destination_diaries_15/",
