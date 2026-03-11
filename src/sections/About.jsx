@@ -47,7 +47,7 @@ My focus is on building production-ready software, not just prototypes. I priori
       <div className="flex flex-col items-center justify-between gap-16 px-10 pb-16 text-xl font-light tracking-wide lg:flex-row md:text-2xl lg:text-[27px] text-white/80">
         <img
           ref={imgRef}
-          src="images/img3.jpg"
+          src="images/jayesh-patil.jpg"
           alt="man"
           className="w-md rounded-3xl"
           loading="lazy"
