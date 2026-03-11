@@ -82,6 +82,21 @@ export const RESUME_URL = "https://wrcoiavqijnltexejxob.supabase.co/storage/v1/o
 
 export const projects = [
   {
+    id: 104,
+    name: "Gravitate",
+    description:
+      "A modern digital storefront for a traditional spice brand. Features a structured product catalog, responsive UI, SEO optimizations, and a unique WhatsApp-integrated order system for higher conversions.",
+    href: "http://gravitatee.com",
+    image: "/images/Gravitate_Masala.png",
+    bgImage: "/images/Gravitate_Masala.png",
+    frameworks: [
+      { id: 1, name: "Next.js" },
+      { id: 2, name: "Tailwind CSS" },
+      { id: 3, name: "TypeScript" },
+      { id: 4, name: "Supabase" },
+    ],
+  },
+  {
     id: 101,
     name: "Riyansh Ayurvedic E-Commerce",
     description:
