@@ -13,7 +13,7 @@ const Experience = () => {
     {
       title: "Full-stack Developer",
       company: "Divines Code",
-      period: "Sep 2025 - Present",
+      period: "Sep 2025 - Jan 2026",
       type: "Nashik, Maharashtra, India",
       description: "Design and develop full-stack web applications aligned with real business needs.",
       responsibilities: [
