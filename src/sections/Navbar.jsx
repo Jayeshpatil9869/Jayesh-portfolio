@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { socials, RESUME_URL } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Link } from "react-scroll";
 import { applyMagnetEffect } from "../utils/sheryEffects";
+import { useLenis } from "lenis/react";
 
 const Navbar = () => {
   const navRef = useRef(null);
@@ -15,6 +15,7 @@ const Navbar = () => {
   const iconTl = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [showBurger, setShowBurger] = useState(true);
+  const lenis = useLenis();
   useGSAP(() => {
     gsap.set(navRef.current, { xPercent: 100 });
     gsap.set([linksRef.current, contactRef.current], {
@@ -75,8 +76,13 @@ const Navbar = () => {
     let lastScrollY = window.scrollY;
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const isNearBottom =
+        window.scrollY + window.innerHeight >=
+        document.documentElement.scrollHeight - 100;
 
-      setShowBurger(currentScrollY <= lastScrollY || currentScrollY < 10);
+      setShowBurger(
+        currentScrollY <= lastScrollY || currentScrollY < 10 || isNearBottom
+      );
 
       lastScrollY = currentScrollY;
     };
@@ -113,6 +119,18 @@ const Navbar = () => {
     }
     setIsOpen(!isOpen);
   };
+
+  const scrollToSection = (sectionId) => {
+    if (lenis) {
+      lenis.scrollTo(`#${sectionId}`, { offset: 0, duration: 1.2 });
+      return;
+    }
+
+    const el = document.getElementById(sectionId);
+    if (el) {
+      window.scrollTo({ top: el.offsetTop, behavior: "auto" });
+    }
+  };
   return (
     <>
       <nav
@@ -131,10 +149,7 @@ const Navbar = () => {
                       onClick={(e) => {
                         e.preventDefault();
                         toggleMenu(); // Close menu on click
-                        const el = document.getElementById(section);
-                        if (el) {
-                          el.scrollIntoView({ behavior: 'smooth' });
-                        }
+                        scrollToSection(section);
                       }}
                     >
                       {section}
@@ -185,11 +200,7 @@ const Navbar = () => {
                     onClick={(e) => {
                       e.preventDefault();
                       toggleMenu(); // Close menu on click
-                      const el = document.getElementById(section);
-                      if (el) {
-                        // Simple smooth scroll fallback if lenis handles it, or native
-                        el.scrollIntoView({ behavior: 'smooth' });
-                      }
+                      scrollToSection(section);
                     }}
                   >
                     {section}
@@ -216,6 +227,8 @@ const Navbar = () => {
                 <a
                   key={index}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-[13px] leading-loose tracking-widest uppercase hover:text-white transition-colors duration-300 cursor-hover magnet-btn"
                 >
                   {"{ "}

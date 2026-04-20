@@ -115,7 +115,6 @@
 body {
   background: #d6d6d6;
   color: black;
-  scroll-behavior: smooth;
   overflow-x: hidden;
   font-family: var(--font-amiamie);
   /* Keep default cursor visible as requested by user */

@@ -7,8 +7,8 @@ import { useEffect } from "react";
 import { applyMagnetEffect } from "../utils/sheryEffects";
 
 const Contact = () => {
-  const text = `Got a question, how or project Idea?
-    WE’D love to hear from you and discus further!`;
+  const text = `Got a question, how, or project idea?
+    WE'D love to hear from you and discuss further!`;
   const items = [
     "just imagin, I code",
     "just imagin, I code",

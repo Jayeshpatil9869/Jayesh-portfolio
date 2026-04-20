@@ -5,12 +5,10 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const About = () => {
-  const text = `Passionate about clean architecture
-    I build scalable, high-performance solutions
-    from prototype to production`;
-  const aboutText = `I am a Full Stack Developer specializing in the MERN stack (MongoDB, Express, React, Node.js). Unlike typical frontend developers, I understand the full application lifecycle—from designing efficient database schemas and secure REST APIs to implementing pixel-perfect, responsive user interfaces.
+  const text = `Code with purpose. Built for impact.`;
+  const aboutText = `I am a Full Stack Software Developer specializing in the MERN stack. I don't just write code; I build systems that solve real business problems.
 
-My focus is on building production-ready software, not just prototypes. I prioritize clean architecture, long-term maintainability, and performance optimization. Whether integrating complex payment gateways or optimizing load times, I write code that solves real business problems and scales with your growth.`;
+Recently, I architected a unified dashboard system at a fintech startup that eliminated 15+ hours of manual Excel workflow per week—earning me a full-time promotion within two months. From designing optimized MongoDB schemas that cut API response times by 20%, to crafting pixel-perfect frontend interfaces, I own the entire application lifecycle.`;
   const imgRef = useRef(null);
   useGSAP(() => {
     gsap.to("#about", {

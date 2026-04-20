@@ -39,6 +39,16 @@ export default function CustomCursor() {
     for (let i = 0; i < POINT_COUNT; i++) {
       points.push({ x: mouse.x, y: mouse.y });
     }
+    const pointSetters = points.map((point, index) => ({
+      x: gsap.quickTo(point, "x", {
+        duration: index === 0 ? 0.08 : 0.1,
+        ease: index === 0 ? "power4.out" : "power2.out",
+      }),
+      y: gsap.quickTo(point, "y", {
+        duration: index === 0 ? 0.08 : 0.1,
+        ease: index === 0 ? "power4.out" : "power2.out",
+      }),
+    }));
 
     // Mouse move handler
     const handleMouseMove = (e) => {
@@ -68,20 +78,12 @@ export default function CustomCursor() {
 
     // GSAP ticker for smooth real-time updates
     const ticker = () => {
-      gsap.to(points[0], {
-        x: mouse.x,
-        y: mouse.y,
-        duration: 0.08,
-        ease: "power4.out",
-      });
+      pointSetters[0].x(mouse.x);
+      pointSetters[0].y(mouse.y);
 
       for (let i = 1; i < POINT_COUNT; i++) {
-        gsap.to(points[i], {
-          x: points[i - 1].x,
-          y: points[i - 1].y,
-          duration: 0.1,
-          ease: "power2.out",
-        });
+        pointSetters[i].x(points[i - 1].x);
+        pointSetters[i].y(points[i - 1].y);
       }
 
       draw();

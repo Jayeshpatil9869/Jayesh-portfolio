@@ -6,37 +6,48 @@ import gsap from "gsap";
 
 const Experience = () => {
   const text = `Full Stack Developer with hands-on experience
-    in modern web technologies and
-    agile development practices.`;
+in modern web technologies and
+agile development practices.`;
 
   const experienceData = [
     {
+      title: "Software Developer (Full Stack)",
+      company: "OneCapital – Pune, Maharashtra",
+      period: "Dec 2025 - Present",
+      type: "On-site",
+      description: "Working in a fast-paced fintech environment, contributing to investment dashboards and internal systems.",
+      responsibilities: [
+        "Replaced a manual Excel workflow with a unified dashboard system, eliminating 15+ hours of work per week",
+        "Promoted from Intern to Software Developer within 2 months based on performance",
+        "Developed scalable frontend interfaces and optimized backend APIs for financial data visualization",
+        "Shipped production-ready features working directly with stakeholder feedback"
+      ],
+    },
+    {
       title: "Full-stack Developer",
       company: "Divines Code",
-      period: "Sep 2025 - Jan 2026",
-      type: "Nashik, Maharashtra, India",
-      description: "Design and develop full-stack web applications aligned with real business needs.",
+      period: "Jun 2025 - Mar 2026",
+      type: "Nashik, Maharashtra",
+      description: "Delivering production-grade full-stack web solutions for diverse business clients.",
       responsibilities: [
-        "Built responsive and interactive user interfaces using React and modern UI tools",
-        "Developed scalable backend APIs with Node.js, Express, and MongoDB",
-        "Implemented authentication, database-driven features, and performance optimizations",
-        "Contributed to the Divines Code website with enhanced UX, animations, and smooth effects using GSAP & Lenis"
+        "Collaborated to build conversion-driven agency websites and platforms",
+        "Developed secure REST APIs with Node.js and modular React components",
+        "Managed the full lifecycle from requirements to CI/CD deployments using Cloudflare Workers",
+        "Contributed to high-performance UIs using GSAP animations and Next.js"
       ],
     },
     {
       title: "Full Stack Developer Intern",
       company: "DigiMirai – Malegaon, Maharashtra",
-      period: "Apr 2025 - Sep 2025",
+      period: "Jan 2025 - May 2025",
       type: "On-site",
-      description: "Working as a full-stack developer intern focusing on web application development and deployment.",
+      description: "Built and maintained multiple MERN stack applications for real clients.",
       responsibilities: [
-        "Built full-stack MERN applications with real-time dashboards",
-        "Enhanced UI/UX with responsive designs and GSAP/Framer animations",
-        "Implemented secure authentication and role-based access",
-        "Integrated APIs and optimized backend performance",
-        "Worked with teams to deliver end-to-end solutions for IPBazaar, Gaushala, and AI Copilot"
+        "Improved backend performance by ~20% through MongoDB query optimization",
+        "Integrated GSAP and Framer Motion for high-end, responsive user experiences",
+        "Implemented secure authentication (JWT) and database-driven features",
+        "Worked with teams to deliver solutions like IPBazaar and Gaushala platforms"
       ]
-
     }
   ];
 
@@ -74,14 +85,14 @@ const Experience = () => {
         <div
           ref={(el) => (experienceRefs.current[index] = el)}
           key={index}
-          className="sticky px-10 pt-6 pb-12 text-white bg-black border-t-2 border-white/30"
+          className={`px-10 pt-6 pb-12 text-white bg-black border-t-2 border-white/30 ${isDesktop ? "sticky" : "relative"}`}
           style={
             isDesktop
               ? {
                 top: `calc(10vh + ${index * 5}em)`,
                 marginBottom: `${(experienceData.length - index - 1) * 5}rem`,
               }
-              : { top: 0 }
+              : undefined
           }
         >
           <div className="flex items-center justify-between gap-4 font-light">

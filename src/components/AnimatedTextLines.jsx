@@ -20,7 +20,7 @@ export const AnimatedTextLines = ({ text, className, lineClassName = "" }) => {
         },
       });
     }
-  });
+  }, { scope: containerRef, dependencies: [] });
 
   return (
     <div ref={containerRef} className={className}>

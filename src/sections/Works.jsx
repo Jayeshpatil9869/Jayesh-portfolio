@@ -20,6 +20,7 @@ const Works = () => {
   const moveY = useRef(null);
 
   useGSAP(() => {
+    gsap.set(previewRef.current, { x: -600, y: -400 });
     moveX.current = gsap.quickTo(previewRef.current, "x", {
       duration: 1.5,
       ease: "power3.out",
@@ -102,21 +103,25 @@ const Works = () => {
 
   // Apply Shery.js image effect to portfolio thumbnails
   useEffect(() => {
-    // Apply image effect to mobile preview images
-    applyImageEffect(".portfolio-img", {
-      style: 2, // Liquid distortion effect
-      config: {
-        noiseDetail: 1.2,
-        distortionAmount: 2,
-        speed: 1,
-        scaleDist: 0.2,
-      },
-    });
+    const canvas = document.createElement("canvas");
+    const gl =
+      canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
 
-    // Cleanup function
-    return () => {
-      // Any cleanup if needed
-    };
+    if (!gl) return;
+
+    try {
+      applyImageEffect(".portfolio-img", {
+        style: 2,
+        config: {
+          noiseDetail: 1.2,
+          distortionAmount: 2,
+          speed: 1,
+          scaleDist: 0.2,
+        },
+      });
+    } catch (error) {
+      console.warn("Shery image effect failed:", error);
+    }
   }, []);
 
 
@@ -139,7 +144,7 @@ const Works = () => {
             href={project.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative flex flex-col gap-1 py-5 cursor-pointer project-item group md:gap-0 cursor-hover block" // Added block just in case
+            className="relative flex flex-col gap-1 py-5 cursor-pointer project-item group md:gap-0 cursor-hover"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
             aria-label={`View project ${project.name}`}
@@ -198,7 +203,7 @@ const Works = () => {
         {/* desktop Flaoting preview image */}
         <div
           ref={previewRef}
-          className="fixed -top-2/6 left-0 z-50 overflow-hidden  pointer-events-none w-[560px] md:block hidden opacity-0"
+          className="fixed top-0 left-0 z-50 overflow-hidden pointer-events-none w-[560px] md:block hidden opacity-0"
         >
           {currentIndex !== null && (
             <img

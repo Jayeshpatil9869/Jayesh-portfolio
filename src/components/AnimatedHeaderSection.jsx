@@ -27,7 +27,7 @@ const AnimatedHeaderSection = ({
     });
     // Use autoAlpha to handle visibility + opacity to prevent flash of unstyled content
     tl.from(contextRef.current, { y: "50vh", duration: 1, ease: "circ.out" });
-    tl.from(headerRef.current, { autoAlpha: 0, y: "200", duration: 1, ease: "circ.out" }, "<+0.1");
+    tl.from(headerRef.current, { autoAlpha: 0, y: 200, duration: 1, ease: "circ.out" }, "<+0.1");
   }, [isMobile]);
 
   return (

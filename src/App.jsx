@@ -14,7 +14,7 @@ import GoogleAnalytics from "./components/GoogleAnalytics";
 
 const App = () => {
   return (
-    <ReactLenis root className="relative w-screen min-h-screen overflow-x-auto">
+    <ReactLenis root className="relative w-screen min-h-screen overflow-x-hidden">
       <main className="opacity-100">
         <Navbar />
         <Hero />

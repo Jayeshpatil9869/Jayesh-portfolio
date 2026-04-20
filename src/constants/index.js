@@ -82,10 +82,25 @@ export const RESUME_URL = "https://wrcoiavqijnltexejxob.supabase.co/storage/v1/o
 
 export const projects = [
   {
+    id: 105,
+    name: "OneCapital Fintech Dashboard",
+    description:
+      "Problem: Wealth managers wasted 15+ hours/week manually merging financial data across disparate platforms. Solution: Architected a highly scalable Next.js/Fastify monorepo that automates massive Excel data ingestion and provides role-based KPIs. Impact: Eliminated manual reporting, supercharged RM productivity, and earned an early full-time promotion.",
+    href: "https://github.com/Mahendra111111/onecapital",
+    image: "/images/One-Capital-Dashboard-1.png",
+    bgImage: "/images/One-Capital-Dashboard-1.png",
+    frameworks: [
+      { id: 1, name: "Next.js 16" },
+      { id: 2, name: "Fastify" },
+      { id: 3, name: "Turborepo" },
+      { id: 4, name: "Supabase" },
+    ],
+  },
+  {
     id: 104,
     name: "Gravitate",
     description:
-      "A modern digital storefront for a traditional spice brand. Features a structured product catalog, responsive UI, SEO optimizations, and a unique WhatsApp-integrated order system for higher conversions.",
+      "Problem: A traditional spice brand needed a digital-first approach to digitize sales. Solution: Built a high-performance Next.js platform with a bespoke WhatsApp-integrated ordering system. Impact: Created a low-friction checkout experience that directly increased conversions.",
     href: "http://gravitatee.com",
     image: "/images/Gravitate_Masala.png",
     bgImage: "/images/Gravitate_Masala.png",
@@ -100,7 +115,7 @@ export const projects = [
     id: 101,
     name: "Riyansh Ayurvedic E-Commerce",
     description:
-      "A React and Tailwind CSS based management system for cow shelters (Gaushalas). Includes modules for tracking cows, donations, staff, and resources with an intuitive dashboard and clean UI design.",
+      "Problem: A wellness brand needed a robust online storefront. Solution: Developed a secure platform with product catalogs, bookings, and Cloudflare edge delivery. Impact: Achieved near-zero latency and seamless transactions.",
     href: "https://www.riyanshamrit.com/",
     image: "/images/Riyansh-Ayurvedic-E-Commerce.jpg",
     bgImage: "/images/Riyansh-Ayurvedic-E-Commerce.jpg",
@@ -115,7 +130,7 @@ export const projects = [
     name: "Divines Code",
     description:
       "Divines Code is a modern digital marketing and development agency website designed to help startups grow their online presence. The platform highlights services such as branding, digital marketing strategies.",
-    href: "https://divinescode.com/", // No URL provided in request, assuming placeholder or maybe I misread. Re-reading request: No URL for Divines Code in text.
+    href: "https://divinescode.com/",
     image: "/images/divines-code.jpg",
     bgImage: "/images/divines-code.jpg",
     frameworks: [
@@ -157,7 +172,7 @@ export const projects = [
     id: 3,
     name: "Gaushala Management Dashboard",
     description:
-      "A comprehensive management dashboard developed with React and Tailwind CSS for cow shelters (Gaushalas). It enables efficient tracking of cows, donations, staff, and daily resources.",
+      "Problem: Cow shelters struggled with offline tracking of donations and staff. Solution: Developed a management platform with React, role-based auth, and dynamic tables. Impact: Digitized daily operations, significantly reducing administrative overhead.",
     href: "https://gaushala-management-system.jayeshbpatil.com/",
     image: "/images/Gaushala.jpg",
     bgImage: "/images/Gaushala.jpg",
@@ -171,7 +186,7 @@ export const projects = [
     id: 7,
     name: "Enhancify – AI Image Enhancer",
     description:
-      "An AI-powered drag-and-drop image enhancement tool with real-time preview and one-click optimization. Built with performance in mind—lazy loading, asset optimization, and Lighthouse 95+.",
+      "Problem: Users needed a fast, privacy-preserving tool to upscale images. Solution: Created a drag-and-drop React app featuring lazy loading and an AI processing API. Impact: Achieved a Lighthouse performance score of 95+ and delivered a smooth optimization experience.",
     href: "https://github.com/Jayeshpatil9869/image-enhancer",
     image: "/images/image-enhancer.jpg",
     bgImage: "/images/image-enhancer.jpg",
