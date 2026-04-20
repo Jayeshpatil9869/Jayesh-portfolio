@@ -134,6 +134,7 @@ const Navbar = () => {
   return (
     <>
       <nav
+        id="site-navigation-drawer"
         ref={navRef}
         className="fixed z-50 flex flex-col justify-between w-full h-full px-10 uppercase bg-black text-white/80 py-24 gap-y-10 md:w-1/2 md:left-1/2"
       >
@@ -145,7 +146,7 @@ const Navbar = () => {
                   <div className="flex flex-col xl:flex-row xl:items-center gap-2 xl:gap-8">
                     <a
                       href={`#${section}`}
-                      className="transition-all duration-300 cursor-pointer text-[#cfa355] hover:text-white cursor-hover block"
+                      className="transition-all duration-300 cursor-pointer text-gold hover:text-white cursor-hover block"
                       onClick={(e) => {
                         e.preventDefault();
                         toggleMenu(); // Close menu on click
@@ -159,7 +160,7 @@ const Navbar = () => {
                         href={RESUME_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-[#cfa355] transition-colors cursor-hover"
+                        className="hover:text-gold transition-colors cursor-hover"
                         onClick={(e) => {
                           e.preventDefault();
                           window.open(`${RESUME_URL}?t=${Date.now()}`, '_blank', 'noopener,noreferrer');
@@ -187,7 +188,7 @@ const Navbar = () => {
                             window.open(RESUME_URL, "_blank");
                           }
                         }}
-                        className="hover:text-[#cfa355] transition-colors cursor-hover uppercase"
+                        className="hover:text-gold transition-colors cursor-hover uppercase"
                       >
                         [ DOWNLOAD ]
                       </button>
@@ -240,7 +241,11 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <div
+      <button
+        type="button"
+        aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+        aria-expanded={isOpen}
+        aria-controls="site-navigation-drawer"
         className="fixed z-50 flex flex-col items-center justify-center gap-1 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10 cursor-hover"
         onClick={toggleMenu}
         style={
@@ -251,13 +256,15 @@ const Navbar = () => {
       >
         <span
           ref={topLineRef}
+          aria-hidden="true"
           className="block w-8 h-0.5 bg-white rounded-full origin-center"
         ></span>
         <span
           ref={bottomLineRef}
+          aria-hidden="true"
           className="block w-8 h-0.5 bg-white rounded-full origin-center"
         ></span>
-      </div>
+      </button>
     </>
   );
 };

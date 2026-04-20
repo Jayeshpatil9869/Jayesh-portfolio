@@ -31,7 +31,6 @@ const Contact = () => {
   }, []);
 
   // Apply magnet effect to social media links
-  // Apply magnet effect to social media links
   useEffect(() => {
     let cleanup;
     if (window.matchMedia("(min-width: 768px)").matches) {
@@ -84,7 +83,9 @@ const Contact = () => {
                   <a
                     key={index}
                     href={social.href}
-                    className="text-sm leading-loose tracking-wides uppercase md:text-base hover:text-white/80 transition-colors duration-200 cursor-hover magnet-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm leading-loose tracking-widest uppercase md:text-base hover:text-white/80 transition-colors duration-200 cursor-hover magnet-btn"
                   >
                     {"{ "}
                     {social.name}

@@ -20,7 +20,7 @@ const Resume = () => {
             },
             ease: "power1.inOut",
         });
-    });
+    }, { dependencies: [] });
 
     const handleDownload = async (e) => {
         e.preventDefault();
@@ -61,13 +61,13 @@ const Resume = () => {
                     href={`${RESUME_URL}?t=${new Date().getTime()}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-8 py-4 uppercase tracking-widest text-[#ffffff] border border-[#ffffff] rounded-full hover:bg-[#ffffff] hover:text-[#cfa355] transition-all duration-300 font-medium w-full sm:w-auto text-center"
+                    className="px-8 py-4 uppercase tracking-widest text-[#ffffff] border border-[#ffffff] rounded-full hover:bg-[#ffffff] hover:text-gold transition-all duration-300 font-medium w-full sm:w-auto text-center"
                 >
                     View Resume
                 </a>
                 <button
                     onClick={handleDownload}
-                    className="px-8 py-4 uppercase tracking-widest text-black bg-[#ffffff] rounded-full hover:bg-[#cfa355] transition-all duration-300 font-medium w-full sm:w-auto text-center"
+                    className="px-8 py-4 uppercase tracking-widest text-black bg-[#ffffff] rounded-full hover:bg-gold transition-all duration-300 font-medium w-full sm:w-auto text-center"
                 >
                     Download PDF
                 </button>
