@@ -6,9 +6,11 @@ import gsap from "gsap";
 
 const About = () => {
   const text = `Code with purpose. Built for impact.`;
-  const aboutText = `I am a Full Stack Software Developer specializing in the MERN stack. I don't just write code; I build systems that solve real business problems.
+  const aboutText = `I am a Full Stack Software Developer focused on building practical, high-impact systems, not just polished UI.
 
-Recently, I architected a unified dashboard system at a fintech startup that eliminated 15+ hours of manual Excel workflow per week—earning me a full-time promotion within two months. From designing optimized MongoDB schemas that cut API response times by 20%, to crafting pixel-perfect frontend interfaces, I own the entire application lifecycle.`;
+At OneCapital, I helped design and ship a centralized wealth management dashboard to replace Excel-heavy workflows used across AAA and WealthMagic. The platform unified AUM, brokerage, and client-level insights in one place, reducing manual reporting effort and making financial data easier to access for non-technical teams.
+
+I work across the full lifecycle, from architecture and APIs to performance-focused frontend delivery. My core stack includes React, Next.js, Node.js, Fastify, Supabase, and TypeScript, with a strong focus on scalable systems and clean execution.`;
   const imgRef = useRef(null);
   useGSAP(() => {
     gsap.to("#about", {

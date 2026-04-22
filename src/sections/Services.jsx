@@ -5,9 +5,9 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const Experience = () => {
-  const text = `Full Stack Developer with hands-on experience
-in modern web technologies and
-agile development practices.`;
+  const text = `Working on fintech platforms and internal systems
+focused on solving real
+operational problems.`;
 
   const experienceData = [
     {
@@ -15,25 +15,28 @@ agile development practices.`;
       company: "OneCapital – Pune, Maharashtra",
       period: "Dec 2025 - Present",
       type: "On-site",
-      description: "Working in a fast-paced fintech environment, contributing to investment dashboards and internal systems.",
+      description:
+        "Working on fintech platforms and internal systems focused on solving real operational problems.",
       responsibilities: [
-        "Replaced a manual Excel workflow with a unified dashboard system, eliminating 15+ hours of work per week",
-        "Promoted from Intern to Software Developer within 2 months based on performance",
-        "Developed scalable frontend interfaces and optimized backend APIs for financial data visualization",
-        "Shipped production-ready features working directly with stakeholder feedback"
+        "Built and enhanced a wealth management dashboard for tracking AUM, brokerage, and client data",
+        "Designed a multi-dashboard system (AAA, WealthMagic, combined) to unify multiple data sources",
+        "Developed backend APIs using Node.js, Fastify, and Supabase for aggregation and filtering",
+        "Implemented role-based access (wirecode system) for controlled data visibility",
+        "Improved handling of large financial datasets and overall system performance",
       ],
     },
     {
-      title: "Full-stack Developer",
+      title: "Full Stack Developer",
       company: "Divines Code",
       period: "Jun 2025 - Mar 2026",
       type: "Nashik, Maharashtra",
-      description: "Delivering production-grade full-stack web solutions for diverse business clients.",
+      description:
+        "Delivered production-grade web platforms and APIs for client-facing business systems.",
       responsibilities: [
-        "Collaborated to build conversion-driven agency websites and platforms",
-        "Developed secure REST APIs with Node.js and modular React components",
-        "Managed the full lifecycle from requirements to CI/CD deployments using Cloudflare Workers",
-        "Contributed to high-performance UIs using GSAP animations and Next.js"
+        "Developed the company’s official website with performance-focused frontend architecture",
+        "Built secure backend APIs and modular frontend components for scalable delivery",
+        "Collaborated across the lifecycle from requirements to deployment and iterations",
+        "Improved UX quality with responsive design patterns and motion-driven interactions",
       ],
     },
     {
@@ -41,14 +44,15 @@ agile development practices.`;
       company: "DigiMirai – Malegaon, Maharashtra",
       period: "Jan 2025 - May 2025",
       type: "On-site",
-      description: "Built and maintained multiple MERN stack applications for real clients.",
+      description:
+        "Worked across frontend and backend development to ship production-facing systems.",
       responsibilities: [
-        "Improved backend performance by ~20% through MongoDB query optimization",
-        "Integrated GSAP and Framer Motion for high-end, responsive user experiences",
-        "Implemented secure authentication (JWT) and database-driven features",
-        "Worked with teams to deliver solutions like IPBazaar and Gaushala platforms"
-      ]
-    }
+        "Developed the company’s official website",
+        "Identified inefficiencies in Excel-based workflows across AAA and WealthMagic systems",
+        "Contributed to building a centralized dashboard to simplify reporting and data access",
+        "Worked across frontend and backend using React.js, Next.js, Node.js, and Supabase",
+      ],
+    },
   ];
 
   const experienceRefs = useRef([]);
