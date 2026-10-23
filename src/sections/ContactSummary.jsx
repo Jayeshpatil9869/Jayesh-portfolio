@@ -22,11 +22,15 @@ const ContactSummary = () => {
   const containerRef = useRef(null);
 
   useGSAP(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const short = window.matchMedia("(max-height: 700px), (max-width: 767px)").matches;
+    if (reduce || short) return;
+
     gsap.to(containerRef.current, {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "center center",
-        end: "+=800 center",
+        end: "+=400 center",
         scrub: 0.5,
         pin: true,
         pinSpacing: true,
@@ -40,12 +44,12 @@ const ContactSummary = () => {
       className="flex flex-col items-center justify-between min-h-screen gap-12 mt-16"
     >
       <Marquee items={items} />
-      <div className="overflow-hidden font-light text-center contact-text-responsive">
+      <div className="overflow-hidden px-4 font-light text-center contact-text-responsive">
         <p>
           “ Let’s build a <br />
           <span className="font-normal">memorable</span> &{" "}
           <span className="italic">inspiring</span> <br />
-          web application <span className="text-gold">together</span> “
+          web application <span className="text-[#6b4e16]">together</span> “
         </p>
       </div>
       <Marquee

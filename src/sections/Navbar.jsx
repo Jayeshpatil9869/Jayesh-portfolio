@@ -14,8 +14,8 @@ const Navbar = () => {
   const tl = useRef(null);
   const iconTl = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [showBurger, setShowBurger] = useState(true);
   const lenis = useLenis();
+  const burgerRef = useRef(null);
   useGSAP(() => {
     gsap.set(navRef.current, { xPercent: 100 });
     gsap.set([linksRef.current, contactRef.current], {
@@ -73,24 +73,47 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const isNearBottom =
-        window.scrollY + window.innerHeight >=
-        document.documentElement.scrollHeight - 100;
+    if (!isOpen) return;
 
-      setShowBurger(
-        currentScrollY <= lastScrollY || currentScrollY < 10 || isNearBottom
-      );
+    const drawer = navRef.current;
+    const burger = burgerRef.current;
+    const previouslyFocused = document.activeElement;
+    lenis?.stop();
 
-      lastScrollY = currentScrollY;
+    const onKey = (event) => {
+      if (event.key === "Escape") {
+        tl.current?.reverse();
+        iconTl.current?.reverse();
+        setIsOpen(false);
+        return;
+      }
+      if (event.key !== "Tab" || !drawer) return;
+      const focusable = drawer.querySelectorAll("a, button");
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+
+    window.addEventListener("keydown", onKey);
+    drawer?.querySelector("a, button")?.focus();
+
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      lenis?.start();
+      if (previouslyFocused instanceof HTMLElement) {
+        previouslyFocused.focus();
+      } else {
+        burger?.focus();
+      }
+    };
+  }, [isOpen, lenis]);
 
   // Apply magnet effect to navigation links and social media links
   useEffect(() => {
@@ -136,9 +159,10 @@ const Navbar = () => {
       <nav
         id="site-navigation-drawer"
         ref={navRef}
-        className="fixed z-50 flex flex-col justify-between w-full h-full px-10 uppercase bg-black text-white/80 py-24 gap-y-10 md:w-1/2 md:left-1/2"
+        className="fixed z-50 flex flex-col justify-between w-full h-full px-6 sm:px-10 uppercase bg-black text-white/80 py-24 gap-y-10 md:w-1/2 md:left-1/2 overflow-y-auto overscroll-contain"
+        data-lenis-prevent=""
       >
-        <div className="flex flex-col text-5xl gap-y-2 md:text-6xl lg:text-[9vh]">
+        <div className="flex flex-col text-[clamp(2rem,9vw,3rem)] gap-y-2 md:text-5xl lg:text-[clamp(2.75rem,6vh,5.5rem)]">
           {["home", "experience", "about", "work", "resume", "contact"].map(
             (section, index) => (
               <div key={index} ref={(el) => (linksRef.current[index] = el)}>
@@ -163,7 +187,7 @@ const Navbar = () => {
                         className="hover:text-gold transition-colors cursor-hover"
                         onClick={(e) => {
                           e.preventDefault();
-                          window.open(`${RESUME_URL}?t=${Date.now()}`, '_blank', 'noopener,noreferrer');
+                          window.open(RESUME_URL, "_blank", "noopener,noreferrer");
                         }}
                       >
                         [ VIEW ]
@@ -172,7 +196,7 @@ const Navbar = () => {
                         onClick={async (e) => {
                           e.preventDefault();
                           try {
-                            const response = await fetch(`${RESUME_URL}?t=${new Date().getTime()}`);
+                            const response = await fetch(RESUME_URL);
                             if (!response.ok) throw new Error("Network response was not ok");
                             const blob = await response.blob();
                             const url = window.URL.createObjectURL(blob);
@@ -217,9 +241,9 @@ const Navbar = () => {
         >
           <div className="font-light">
             <p className="tracking-wider text-white/50">E-mail</p>
-            <p className="text-[15px] tracking-widest lowercase text-pretty">
+            <a href="mailto:work@jayeshbpatil.com" className="text-[15px] tracking-widest lowercase text-pretty">
               work@jayeshbpatil.com
-            </p>
+            </a>
           </div>
           <div className="font-light">
             <p className="tracking-wider text-white/50">Social Media</p>
@@ -246,13 +270,10 @@ const Navbar = () => {
         aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
         aria-expanded={isOpen}
         aria-controls="site-navigation-drawer"
-        className="fixed z-50 flex flex-col items-center justify-center gap-1 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10 cursor-hover"
+        ref={burgerRef}
+        className="fixed z-50 flex flex-col items-center justify-center gap-1 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-4 sm:right-10 cursor-hover"
         onClick={toggleMenu}
-        style={
-          showBurger
-            ? { clipPath: "circle(50% at 50% 50%)" }
-            : { clipPath: "circle(0% at 50% 50%)" }
-        }
+        style={{ top: "max(1rem, env(safe-area-inset-top))", right: "max(1rem, env(safe-area-inset-right))" }}
       >
         <span
           ref={topLineRef}

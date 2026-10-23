@@ -82,6 +82,38 @@ export const RESUME_URL = "https://wrcoiavqijnltexejxob.supabase.co/storage/v1/o
 
 export const projects = [
   {
+    id: 107,
+    name: "LinkNest",
+    description:
+      "Problem: Traditional bookmarking tools save raw URLs without visual context, making it impossible to remember why you saved them. Solution: Built an editorial visual URL library and personal knowledge archive with Next.js 16, React 19, Fastify 5, and Supabase/PostgreSQL. Features instant zero-registration URL parsing with automated OpenGraph metadata extraction, WebGL shader effects, calm 3D card interactions, and fast multi-attribute search across titles, domains, tags, and categories. Impact: Transformed URL hoarding into an intuitive personal archive with sub-100ms search and full PWA support.",
+    href: "https://linknest.divinescode.com/",
+    image: "/images/linknest.png",
+    bgImage: "/images/linknest.png",
+    frameworks: [
+      { id: 1, name: "Next.js 16" },
+      { id: 2, name: "React 19" },
+      { id: 3, name: "Fastify 5" },
+      { id: 4, name: "Supabase" },
+      { id: 5, name: "WebGL / GSAP" },
+    ],
+  },
+  {
+    id: 106,
+    name: "VELORAA ROUGEE",
+    description:
+      "Problem: Luxury cosmetics brands face inventory race conditions during flash drops and lost conversions from friction-heavy checkouts. Solution: Architected a full-stack luxury e-commerce platform and ERP with React 19, Fastify v5, and PostgreSQL/Supabase, featuring real-time inventory reservation, PayU SHA-512 cryptographic verification, anonymous-to-user cart merging, and a 60fps editorial UI with Lenis and GSAP. Impact: Eliminated overselling race conditions, guaranteed zero floating-point financial errors using integer-paise math, and achieved sub-100ms API response times.",
+    href: "https://veloraarougee.com/",
+    image: "/images/veloraa-rougee.png",
+    bgImage: "/images/veloraa-rougee.png",
+    frameworks: [
+      { id: 1, name: "React 19" },
+      { id: 2, name: "Fastify v5" },
+      { id: 3, name: "PostgreSQL" },
+      { id: 4, name: "Tailwind CSS v4" },
+      { id: 5, name: "Lenis & GSAP" },
+    ],
+  },
+  {
     id: 105,
     name: "OneCapital Fintech Dashboard",
     description:
@@ -112,6 +144,20 @@ export const projects = [
     ],
   },
   {
+    id: 102,
+    name: "Divines Code",
+    description:
+      "Divines Code is a modern digital marketing and development agency website designed to help startups grow their online presence. The platform highlights services such as branding, digital marketing strategies.",
+    href: "https://divinescode.com/",
+    image: "/images/divines-code.png",
+    bgImage: "/images/divines-code.png",
+    frameworks: [
+      { id: 1, name: "HTML" },
+      { id: 2, name: "CSS" },
+      { id: 3, name: "JavaScript" },
+    ],
+  },
+  {
     id: 101,
     name: "Riyansh Ayurvedic E-Commerce",
     description:
@@ -123,20 +169,6 @@ export const projects = [
       { id: 1, name: "React.js" },
       { id: 2, name: "Tailwind CSS" },
       { id: 3, name: "E-Commerce" },
-    ],
-  },
-  {
-    id: 102,
-    name: "Divines Code",
-    description:
-      "Divines Code is a modern digital marketing and development agency website designed to help startups grow their online presence. The platform highlights services such as branding, digital marketing strategies.",
-    href: "https://divinescode.com/",
-    image: "/images/divines-code.jpg",
-    bgImage: "/images/divines-code.jpg",
-    frameworks: [
-      { id: 1, name: "HTML" },
-      { id: 2, name: "CSS" },
-      { id: 3, name: "JavaScript" },
     ],
   },
   {

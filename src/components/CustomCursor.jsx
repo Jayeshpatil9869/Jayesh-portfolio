@@ -15,16 +15,21 @@ export default function CustomCursor() {
 
     // Check for mobile/tablet devices
     const isMobile = window.matchMedia("(max-width: 768px)").matches ||
-      window.matchMedia("(hover: none)").matches;
+      window.matchMedia("(hover: none)").matches ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (isMobile) return;
 
     const ctx = canvas.getContext("2d");
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 
     // Set canvas size
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = Math.floor(window.innerWidth * dpr);
+      canvas.height = Math.floor(window.innerHeight * dpr);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
     resizeCanvas();
@@ -90,12 +95,23 @@ export default function CustomCursor() {
     };
 
     // Add GSAP ticker
+    let running = true;
+    const onVisibility = () => {
+      if (document.hidden && running) {
+        gsap.ticker.remove(ticker);
+        running = false;
+      } else if (!document.hidden && !running) {
+        gsap.ticker.add(ticker);
+        running = true;
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
     gsap.ticker.add(ticker);
 
-    // Cleanup function
     return () => {
       window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("visibilitychange", onVisibility);
       gsap.ticker.remove(ticker);
     };
   }, []);
@@ -107,7 +123,6 @@ export default function CustomCursor() {
       className="fixed inset-0 block pointer-events-none"
       style={{
         zIndex: 9999,
-        cursor: "none",
       }}
     />
   );

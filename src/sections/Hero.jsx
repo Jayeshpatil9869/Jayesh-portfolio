@@ -7,6 +7,7 @@ const LazyEtheralShadow = lazy(() => import("@/components/ui/etheral-shadow").th
 
 const Hero = () => {
   const isMobile = useMediaQuery({ maxWidth: 853 });
+  const reduceMotion = useMediaQuery({ query: "(prefers-reduced-motion: reduce)" });
   const [showBackground, setShowBackground] = useState(false);
   const { ref, inView } = useInView({
     threshold: 0,
@@ -14,6 +15,7 @@ const Hero = () => {
   });
 
   useEffect(() => {
+    if (reduceMotion) return;
     if (isMobile) {
       // Defer heavy animations on mobile until idle or 2.5s fallback
       if ('requestIdleCallback' in window) {
@@ -26,7 +28,7 @@ const Hero = () => {
     } else {
       setTimeout(() => setShowBackground(true), 100);
     }
-  }, [isMobile]);
+  }, [isMobile, reduceMotion]);
 
   const text = `Building Premium Scalable SaaS Platforms &
 Performance-First Web Applications.
@@ -37,6 +39,8 @@ React.js · Node.js · MongoDB · System Architecture`;
 
       <AnimatedHeaderSection
         isMobile={isMobile}
+        heading="h1"
+        size="display"
         subTitle={"Full Stack MERN Developer"}
         title={"Jayesh Patil"}
         text={text}
@@ -51,7 +55,7 @@ React.js · Node.js · MongoDB · System Architecture`;
               animation={{ scale: 100, speed: 90 }}
               noise={{ opacity: 1, scale: 1.2 }}
               sizing="fill"
-              paused={!inView || isMobile}
+              paused={!inView || isMobile || reduceMotion}
             />
           </Suspense>
         )}

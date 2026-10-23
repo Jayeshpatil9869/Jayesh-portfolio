@@ -7,16 +7,18 @@ import { useEffect } from "react";
 import { applyMagnetEffect } from "../utils/sheryEffects";
 
 const Contact = () => {
-  const text = `Got a question, how, or project idea?
+  const text = `Got a question, or a project idea?
     WE'D love to hear from you and discuss further!`;
   const items = [
-    "just imagin, I code",
-    "just imagin, I code",
-    "just imagin, I code",
-    "just imagin, I code",
-    "just imagin, I code",
+    "just imagine, I code",
+    "just imagine, I code",
+    "just imagine, I code",
+    "just imagine, I code",
+    "just imagine, I code",
   ];
   useGSAP(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
     gsap.from(".social-link", {
       y: 100,
       opacity: 0,
@@ -57,23 +59,23 @@ const Contact = () => {
           text={text}
           textColor={"text-white"}
           withScrollTrigger={true}
-          titleFontSize="text-5xl sm:text-7xl md:text-[9rem]"
+          size="section"
         />
         <div className="flex px-10 font-light text-white uppercase lg:text-[32px] text-[26px] leading-none mb-10">
           <div className="flex flex-col w-full gap-10">
             <div className="social-link">
               <h2>E-mail</h2>
               <div className="w-full h-px my-2 bg-white/30" />
-              <p className="text-xl tracking-wider lowercase md:text-2xl lg:text-3xl">
+              <a href="mailto:work@jayeshbpatil.com" className="text-xl tracking-wider lowercase md:text-2xl lg:text-3xl">
                 work@jayeshbpatil.com
-              </p>
+              </a>
             </div>
             <div className="social-link">
               <h2>Phone</h2>
               <div className="w-full h-px my-2 bg-white/30" />
-              <p className="text-xl lowercase md:text-2xl lg:text-3xl">
+              <a href="tel:+919209389015" className="text-xl lowercase md:text-2xl lg:text-3xl">
                 +91 9209389015
-              </p>
+              </a>
             </div>
             <div className="social-link">
               <h2>Social Media</h2>

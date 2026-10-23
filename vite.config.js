@@ -21,6 +21,9 @@ function glslPlugin() {
 }
 
 export default defineConfig({
+  server: {
+    host: true, // Exposes the project on local network (Network: http://192.168.x.x:5173)
+  },
   plugins: [tailwindcss(), react(), glslPlugin()],
   resolve: {
     alias: {

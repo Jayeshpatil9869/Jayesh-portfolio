@@ -1,10 +1,9 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import { projects } from "../constants";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { applyImageEffect } from "../utils/sheryEffects";
 
 const Works = () => {
   const overlayRefs = useRef([]);
@@ -20,6 +19,8 @@ const Works = () => {
   const moveY = useRef(null);
 
   useGSAP(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
     gsap.set(previewRef.current, { x: -600, y: -400 });
     moveX.current = gsap.quickTo(previewRef.current, "x", {
       duration: 1.5,
@@ -95,35 +96,12 @@ const Works = () => {
 
   const handleMouseMove = (e) => {
     if (window.innerWidth < 768) return;
+    if (!moveX.current || !moveY.current) return;
     mouse.current.x = e.clientX + 24;
     mouse.current.y = e.clientY + 24;
     moveX.current(mouse.current.x);
     moveY.current(mouse.current.y);
   };
-
-  // Apply Shery.js image effect to portfolio thumbnails
-  useEffect(() => {
-    const canvas = document.createElement("canvas");
-    const gl =
-      canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-
-    if (!gl) return;
-
-    try {
-      applyImageEffect(".portfolio-img", {
-        style: 2,
-        config: {
-          noiseDetail: 1.2,
-          distortionAmount: 2,
-          speed: 1,
-          scaleDist: 0.2,
-        },
-      });
-    } catch (error) {
-      console.warn("Shery image effect failed:", error);
-    }
-  }, []);
-
 
   return (
     <section id="work" className="flex flex-col min-h-screen">
@@ -158,16 +136,16 @@ const Works = () => {
             />
 
             {/* title */}
-            <div className="flex justify-between px-10 text-black transition-all duration-500 md:group-hover:px-12 md:group-hover:text-white">
-              <h2 className="lg:text-[32px] text-[26px] leading-none">
+            <div className="flex justify-between gap-4 px-4 sm:px-10 text-black transition-all duration-500 md:group-hover:px-12 md:group-hover:text-white">
+              <h2 className="min-w-0 text-xl sm:text-[26px] lg:text-[32px] leading-tight text-balance">
                 {project.name}
               </h2>
-              <Icon icon="lucide:arrow-up-right" className="md:size-6 size-5" />
+              <Icon icon="lucide:arrow-up-right" className="md:size-6 size-5 shrink-0" aria-hidden="true" />
             </div>
             {/* divider */}
             <div className="w-full h-0.5 bg-black/80" />
             {/* framework */}
-            <div className="flex px-10 text-xs leading-loose uppercase transtion-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
+            <div className="flex flex-wrap px-4 sm:px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
               {project.frameworks.map((framework) => (
                 <p
                   key={framework.id}
@@ -178,25 +156,16 @@ const Works = () => {
               ))}
             </div>
             {/* mobile preview image */}
-            <div className="relative flex items-center justify-center px-10 md:hidden h-[400px]">
-              <img
-                src={project.bgImage}
-                alt={`${project.name}-bg-image`}
-                className="object-cover w-full h-full rounded-md brightness-50"
-                loading="lazy"
-                decoding="async"
-                width="800"
-                height="400"
-              />
-              <img
-                src={project.image}
-                alt={`${project.name}-image`}
-                className="absolute bg-center px-14 rounded-xl portfolio-img"
-                loading="lazy"
-                decoding="async"
-                width="600"
-                height="340"
-              />
+            <div className="relative px-4 sm:px-10 md:hidden">
+              <div className="relative w-full aspect-[16/10]">
+                <ProjectPicture
+                  src={project.image}
+                  alt={`${project.name} preview`}
+                  className="object-cover w-full h-full rounded-md"
+                  width="800"
+                  height="500"
+                />
+              </div>
             </div>
           </a>
         ))}
@@ -206,13 +175,12 @@ const Works = () => {
           className="fixed top-0 left-0 z-50 overflow-hidden pointer-events-none w-[560px] md:block hidden opacity-0"
         >
           {currentIndex !== null && (
-            <img
+            <ProjectPicture
               src={projects[currentIndex].image}
-              alt="preview"
-              className="object-cover w-full h-full portfolio-img"
+              alt=""
+              className="object-cover w-full h-full"
               width="560"
               height="400"
-              decoding="async"
             />
           )}
         </div>
@@ -220,5 +188,27 @@ const Works = () => {
     </section>
   );
 };
+
+function webpSrc(src) {
+  return src.replace(/\.(png|jpe?g)$/i, ".webp");
+}
+
+function ProjectPicture({ src, alt, className, width, height }) {
+  const webp = webpSrc(src);
+  return (
+    <picture>
+      {webp !== src ? <source srcSet={webp} type="image/webp" /> : null}
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
+  );
+}
 
 export default Works;

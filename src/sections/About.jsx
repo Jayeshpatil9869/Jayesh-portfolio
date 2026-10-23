@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
-import { AnimatedTextLines } from "../components/AnimatedTextLines";
+import ScrollFillText from "../components/ScrollFillText";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
@@ -13,6 +13,8 @@ At OneCapital, I helped design and ship a centralized wealth management dashboar
 I work across the full lifecycle, from architecture and APIs to performance-focused frontend delivery. My core stack includes React, Next.js, Node.js, Fastify, Supabase, and TypeScript, with a strong focus on scalable systems and clean execution.`;
   const imgRef = useRef(null);
   useGSAP(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
     gsap.to("#about", {
       scale: 0.95,
       scrollTrigger: {
@@ -48,17 +50,17 @@ I work across the full lifecycle, from architecture and APIs to performance-focu
         <img
           ref={imgRef}
           src="images/jayesh-patil.jpg"
-          alt="man"
-          className="w-md rounded-3xl"
+          alt="Portrait of Jayesh Patil"
+          className="w-full max-w-md rounded-3xl"
           loading="lazy"
           decoding="async"
           width="448"
           height="500"
         />
-        <AnimatedTextLines
+        <ScrollFillText
           text={aboutText}
           className={"w-full"}
-          lineClassName="mb-8 last:mb-0"
+          paragraphClassName="mb-8 last:mb-0"
         />
       </div>
     </section>

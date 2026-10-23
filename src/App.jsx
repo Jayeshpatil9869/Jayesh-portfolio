@@ -10,11 +10,17 @@ import ContactSummary from "./sections/ContactSummary";
 import Contact from "./sections/Contact";
 import ReactLenis from "lenis/react";
 import CustomCursor from "./components/CustomCursor";
-import GoogleAnalytics from "./components/GoogleAnalytics";
+import LenisScrollSync from "./components/LenisScrollSync";
 
 const App = () => {
   return (
-    <ReactLenis root className="relative w-screen min-h-screen overflow-x-hidden">
+    <ReactLenis
+      root
+      autoRaf={false}
+      options={{ autoRaf: false }}
+      className="relative w-full min-h-screen"
+    >
+      <LenisScrollSync />
       <main className="opacity-100">
         <Navbar />
         <Hero />
@@ -34,7 +40,6 @@ const App = () => {
         <Contact />
 
         <CustomCursor />
-        <GoogleAnalytics />
       </main>
     </ReactLenis>
   );

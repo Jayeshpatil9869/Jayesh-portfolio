@@ -9,6 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Resume = () => {
     useGSAP(() => {
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduce) return;
         gsap.to("#resume", {
             scale: 0.95,
             scrollTrigger: {
@@ -26,7 +28,7 @@ const Resume = () => {
         e.preventDefault();
         try {
             // Append timestamp to bypass caching
-            const response = await fetch(`${RESUME_URL}?t=${new Date().getTime()}`);
+            const response = await fetch(RESUME_URL);
             if (!response.ok) throw new Error("Network response was not ok");
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
@@ -58,7 +60,7 @@ const Resume = () => {
             />
             <div className="flex flex-col items-center justify-center gap-6 mt-12 sm:flex-row">
                 <a
-                    href={`${RESUME_URL}?t=${new Date().getTime()}`}
+                    href={RESUME_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-8 py-4 uppercase tracking-widest text-[#ffffff] border border-[#ffffff] rounded-full hover:bg-[#ffffff] hover:text-gold transition-all duration-300 font-medium w-full sm:w-auto text-center"
