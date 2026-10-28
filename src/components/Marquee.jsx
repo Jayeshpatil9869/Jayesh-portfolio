@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { Icon } from "../lib/icons";
 import gsap from "gsap";
 import { Observer } from "gsap/all";
 import { useEffect, useRef } from "react";

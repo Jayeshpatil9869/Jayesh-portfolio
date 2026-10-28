@@ -6,7 +6,7 @@ Live site: https://jayeshbpatil.com
 Stack: Vite 6 + React 18 + Tailwind CSS 4, GSAP, Lenis, Framer Motion, Cloudflare Worker  
 Method: static code review, asset inventory, SEO/security review of `index.html`, `src/index.js`, `public/robots.txt`, `public/sitemap.xml`, and built `dist/` sizes.
 
-This document records what was audited, what is already strong, and every issue found. It does not claim rankings, traffic, or a Lighthouse score. Live Lighthouse, axe, and Reticle were not run in this pass. Semgrep and ESLint did not execute in this session (CLI unavailable / `npx` not found from the quality runner).
+This document records what was audited, what is already strong, and every issue found. It does not claim now  rankings, traffic, or a Lighthouse score. Live Lighthouse, axe, and Reticle were not run in this pass. Semgrep and ESLint did not execute in this session (CLI unavailable / `npx` not found from the quality runner).
 
 ---
 

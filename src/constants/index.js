@@ -89,6 +89,16 @@ export const projects = [
     href: "https://linknest.divinescode.com/",
     image: "/images/linknest.png",
     bgImage: "/images/linknest.png",
+    caseStudy: {
+      id: "linknest",
+      summary: "Editorial visual URL library and personal knowledge archive.",
+      problem:
+        "Traditional bookmarking tools save raw URLs without visual context, making it hard to remember why a link was saved.",
+      solution:
+        "Built LinkNest with Next.js 16, React 19, Fastify 5, and Supabase/PostgreSQL — zero-registration URL parsing, OpenGraph extraction, WebGL/GSAP interactions, and multi-attribute search.",
+      impact:
+        "Turned URL hoarding into a searchable personal archive with fast search and full PWA support.",
+    },
     frameworks: [
       { id: 1, name: "Next.js 16" },
       { id: 2, name: "React 19" },
@@ -118,7 +128,16 @@ export const projects = [
     name: "OneCapital Fintech Dashboard",
     description:
       "Problem: Wealth managers wasted 15+ hours/week manually merging financial data across disparate platforms. Solution: Architected a highly scalable Next.js/Fastify monorepo that automates massive Excel data ingestion and provides role-based KPIs. Impact: Eliminated manual reporting, supercharged RM productivity, and earned an early full-time promotion.",
-    href: "https://github.com/Mahendra111111/onecapital",
+    href: "#onecapital",
+    internal: true,
+    caseStudy: {
+      id: "onecapital",
+      summary: "Internal wealth-management dashboard,\nbuilt to replace Excel-heavy reporting.",
+      problem: "Wealth managers wasted 15+ hours/week manually merging financial data across disparate platforms.",
+      solution:
+        "Architected a highly scalable Next.js/Fastify monorepo that automates massive Excel data ingestion and provides role-based KPIs.",
+      impact: "Eliminated manual reporting, supercharged RM productivity, and earned an early full-time promotion.",
+    },
     image: "/images/One-Capital-Dashboard-1.png",
     bgImage: "/images/One-Capital-Dashboard-1.png",
     frameworks: [
@@ -136,6 +155,16 @@ export const projects = [
     href: "http://gravitatee.com",
     image: "/images/Gravitate_Masala.png",
     bgImage: "/images/Gravitate_Masala.png",
+    caseStudy: {
+      id: "gravitate",
+      summary: "D2C storefront for a spice brand with WhatsApp ordering.",
+      problem:
+        "A traditional spice brand needed a digital-first path to take orders without a heavy checkout funnel.",
+      solution:
+        "Shipped a Next.js storefront with TypeScript, Tailwind, Supabase, and a WhatsApp-integrated ordering flow.",
+      impact:
+        "Lowered purchase friction with a WhatsApp-first checkout path for conversions.",
+    },
     frameworks: [
       { id: 1, name: "Next.js" },
       { id: 2, name: "Tailwind CSS" },
@@ -217,6 +246,7 @@ export const projects = [
   {
     id: 7,
     name: "Enhancify – AI Image Enhancer",
+    practice: true,
     description:
       "Problem: Users needed a fast, privacy-preserving tool to upscale images. Solution: Created a drag-and-drop React app featuring lazy loading and an AI processing API. Impact: Achieved a Lighthouse performance score of 95+ and delivered a smooth optimization experience.",
     href: "https://github.com/Jayeshpatil9869/image-enhancer",
@@ -232,6 +262,7 @@ export const projects = [
   {
     id: 8,
     name: "Movie Search App",
+    practice: true,
     description:
       "A real-time movie search web app featuring modular components, client-side routing, and OMDB API integration—optimized with debounce and caching for improved performance.",
     href: "https://github.com/Jayeshpatil9869/MovieSearch-React-Application",
@@ -247,6 +278,7 @@ export const projects = [
   {
     id: 9,
     name: "Rejouice Clone",
+    practice: true,
     description:
       'A "Rejouice" website clone showcasing modern web development techniques with HTML, CSS, JavaScript, and GSAP animations—emphasizing responsive, interactive design.',
     href: "https://github.com/Jayeshpatil9869/Rejouice-Clone",
@@ -262,6 +294,7 @@ export const projects = [
   {
     id: 10,
     name: "Lazarev Agency Clone",
+    practice: true,
     description:
       "A clone of the Lazarev Agency website that demonstrates modern front-end skills—responsive layouts, visuals, and animations with HTML, CSS, and JavaScript.",
     href: "https://github.com/Jayeshpatil9869/Lazarev",
@@ -276,6 +309,7 @@ export const projects = [
   {
     id: 11,
     name: "Outpost Design Website Clone",
+    practice: true,
     description:
       "A modern, responsive clone of the Outpost Design website, showcasing advanced front-end development skills including animations, responsiveness, and sleek UI design.",
     href: "https://github.com/Jayeshpatil9869/Outpost-Project",
@@ -291,6 +325,7 @@ export const projects = [
   {
     id: 12,
     name: "Rethink Website Clone",
+    practice: true,
     description:
       "A replica of the Rethink website using HTML, CSS, and JavaScript. Features smooth fade animations using the AOS (Animate On Scroll) library, interactive elements, and responsive layout.",
     href: "https://github.com/Jayeshpatil9869/Rethink",
@@ -306,6 +341,7 @@ export const projects = [
   {
     id: 13,
     name: "Sundown Studio",
+    practice: true,
     description:
       "A visually immersive clone of the Sundown Studio website, featuring smooth scroll animations and high-quality design elements.",
     href: "https://github.com/Jayeshpatil9869/Sundown-Studio",
@@ -320,8 +356,12 @@ export const projects = [
   },
 ];
 
+export const featuredProjects = projects.filter((project) => !project.practice);
+export const practiceProjects = projects.filter((project) => project.practice);
+export const caseStudyProjects = projects.filter((project) => project.caseStudy);
+
 export const socials = [
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/jayesh-patil01/" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/jayeshpatilfs/" },
   { name: "GitHub", href: "https://github.com/Jayeshpatil9869" },
   { name: "WhatsApp", href: "https://wa.me/919209389015" },
   { name: "Codepen", href: "https://codepen.io/jayeshpatil" },

@@ -2,10 +2,12 @@ import { useMediaQuery } from "react-responsive";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import { useState, useEffect, Suspense, lazy } from "react";
 import { useInView } from "react-intersection-observer";
+import { useLenis } from "lenis/react";
 
 const LazyEtheralShadow = lazy(() => import("@/components/ui/etheral-shadow").then(module => ({ default: module.Component })));
 
 const Hero = () => {
+  const lenis = useLenis();
   const isMobile = useMediaQuery({ maxWidth: 853 });
   const reduceMotion = useMediaQuery({ query: "(prefers-reduced-motion: reduce)" });
   const [showBackground, setShowBackground] = useState(false);
@@ -30,6 +32,15 @@ const Hero = () => {
     }
   }, [isMobile, reduceMotion]);
 
+  const scrollToSection = (sectionId) => {
+    if (lenis) {
+      lenis.start();
+      lenis.scrollTo(`#${sectionId}`, { offset: 0, duration: 1.2 });
+      return;
+    }
+    document.getElementById(sectionId)?.scrollIntoView();
+  };
+
   const text = `Building Premium Scalable SaaS Platforms &
 Performance-First Web Applications.
 React.js · Node.js · MongoDB · System Architecture`;
@@ -47,6 +58,28 @@ React.js · Node.js · MongoDB · System Architecture`;
         textColor={"text-black"}
         subTitleClassName="text-sm sm:text-base md:text-lg lg:text-xl font-medium"
       />
+      <div className="flex flex-wrap items-center gap-4 px-4 pb-10 sm:px-10 sm:gap-6">
+        <a
+          href="#work"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection("work");
+          }}
+          className="inline-flex items-center justify-center px-5 py-3 text-xs font-medium tracking-[0.2em] uppercase text-white bg-black hover:bg-[#6b4e16] transition-colors cursor-hover"
+        >
+          View work
+        </a>
+        <a
+          href="#contact"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection("contact");
+          }}
+          className="inline-flex items-center justify-center px-5 py-3 text-xs font-medium tracking-[0.2em] uppercase text-black border border-black/80 hover:border-[#6b4e16] hover:text-[#6b4e16] transition-colors cursor-hover"
+        >
+          Contact
+        </a>
+      </div>
       <div className="absolute inset-0 -z-50 w-screen h-screen">
         {showBackground && (
           <Suspense fallback={null}>

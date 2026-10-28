@@ -32,6 +32,9 @@ export default defineConfig({
   },
   assetsInclude: ['**/*.glb'],
   build: {
+    // Hashed bundles go to /static so public/_headers can cache them immutably
+    // (public/assets/* keeps stable, un-hashed file names).
+    assetsDir: "static",
     commonjsOptions: {
       transformMixedEsModules: true,
     },

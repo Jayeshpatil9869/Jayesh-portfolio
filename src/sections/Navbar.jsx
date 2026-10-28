@@ -145,6 +145,8 @@ const Navbar = () => {
 
   const scrollToSection = (sectionId) => {
     if (lenis) {
+      // Lenis is stopped while the drawer is open and ignores scrollTo when stopped.
+      lenis.start();
       lenis.scrollTo(`#${sectionId}`, { offset: 0, duration: 1.2 });
       return;
     }
