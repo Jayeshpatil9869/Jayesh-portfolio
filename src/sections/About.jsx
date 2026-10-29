@@ -6,11 +6,11 @@ import gsap from "gsap";
 
 const About = () => {
   const text = `Code with purpose. Built for impact.`;
-  const aboutText = `I am a Full Stack Software Developer focused on building practical, high-impact systems, not just polished UI.
+  const aboutText = `I am a Full Stack Developer focused on practical production systems — not just polished UI.
 
-At OneCapital, I helped design and ship a centralized wealth management dashboard to replace Excel-heavy workflows used across AAA and WealthMagic. The platform unified AUM, brokerage, and client-level insights in one place, reducing manual reporting effort and making financial data easier to access for non-technical teams.
+At OneCapital Investment Private Limited, I work on wealth management dashboards that bring AUM, brokerage, and client-level reporting into one place, replacing Excel-heavy workflows for business teams.
 
-I work across the full lifecycle, from architecture and APIs to performance-focused frontend delivery. My core stack includes React, Next.js, Node.js, Fastify, Supabase, and TypeScript, with a strong focus on scalable systems and clean execution.`;
+I work across the full lifecycle: architecture, REST APIs, data processing, and performance-focused frontend delivery. Core stack: React.js, Next.js, TypeScript, Node.js, Fastify, PostgreSQL, Supabase, and MongoDB where the project calls for it.`;
   const imgRef = useRef(null);
   useGSAP(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

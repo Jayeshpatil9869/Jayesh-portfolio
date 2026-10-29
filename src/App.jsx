@@ -4,6 +4,7 @@ import Hero from "./sections/Hero";
 import ServiceSummary from "./sections/ServiceSummary";
 import Services from "./sections/Services";
 import About from "./sections/About";
+import Education from "./sections/Education";
 import Works from "./sections/Works";
 import CaseStudy from "./sections/CaseStudy";
 import Resume from "./sections/Resume";
@@ -35,6 +36,7 @@ const App = () => {
         <ServiceSummary />
         <Services />
         <About />
+        <Education />
         <Works />
         <CaseStudy />
         <Resume />

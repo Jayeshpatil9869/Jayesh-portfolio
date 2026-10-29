@@ -25,3 +25,10 @@ dist-ssr
 
 # Wrangler local state
 .wrangler
+
+# Local tooling / OS
+.code-review-graph/
+*.local
+
+# TypeScript incremental build info
+*.tsbuildinfo

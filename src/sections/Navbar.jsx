@@ -165,7 +165,7 @@ const Navbar = () => {
         data-lenis-prevent=""
       >
         <div className="flex flex-col text-[clamp(2rem,9vw,3rem)] gap-y-2 md:text-5xl lg:text-[clamp(2.75rem,6vh,5.5rem)]">
-          {["home", "experience", "about", "work", "resume", "contact"].map(
+          {["home", "experience", "about", "education", "work", "resume", "contact"].map(
             (section, index) => (
               <div key={index} ref={(el) => (linksRef.current[index] = el)}>
                 {section === "resume" ? (

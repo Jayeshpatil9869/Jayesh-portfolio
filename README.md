@@ -13,7 +13,8 @@ I’m based in Pune and work across React, Next.js, Node, Fastify, Supabase, and
 | Section | Purpose |
 | --- | --- |
 | **Hero** | Name, positioning, and quick paths into work or contact |
-| **Experience** | Roles and outcomes (including OneCapital and agency work) |
+| **Experience** | Digi Mirai → Divines Code (intern + freelance overlap) → OneCapital intern → full-time |
+| **Education** | BCA completed (SPPU); MCA in progress (SPPU) |
 | **About** | Short story of how I build — systems, not just screens |
 | **Works** | Production projects first; practice/clones grouped separately |
 | **Case studies** | Problem → solution → impact for selected work (OneCapital, LinkNest, Gravitate) |
@@ -43,19 +44,22 @@ Security and caching headers (CSP, HSTS, immutable `/static` assets) are defined
 ## Project structure
 
 ```text
-src/
-  App.jsx                 # Section composition + Lenis root
-  main.jsx                # Entry, GSAP ScrollTrigger register
-  index.css               # Design tokens / fluid type
-  constants/index.js      # Projects, socials, resume URL
-  sections/               # Hero, Navbar, Works, CaseStudy, Contact, …
-  components/             # Animated headers, marquee, cursor, Lenis sync
-  lib/                    # Icons + small utilities
-public/                   # Images, fonts, _headers, favicons
-src/index.js              # Cloudflare Worker (SPA fallback + assets)
+src/                      # React app + Worker entry (src/index.js)
+public/                   # Served static: images, fonts, _headers, SEO files
+assets/screenshots/       # Source live captures (not served)
+docs/                     # Audits, strategy, profile export notes
+scripts/                  # Image sync / optimize helpers
 ```
 
-Build output goes to `dist/`, with hashed bundles under `/static` so they can be cached aggressively.
+Full map: [`docs/PROJECT-STRUCTURE.md`](docs/PROJECT-STRUCTURE.md).
+
+Build output goes to `dist/` (gitignored), with hashed bundles under `/static`.
+
+Refresh Works hover previews from screenshots:
+
+```bash
+npm run sync:previews
+```
 
 ---
 
@@ -76,6 +80,7 @@ Open [http://localhost:5173](http://localhost:5173).
 | `npm run build` | Production build → `dist/` |
 | `npm run preview` | Preview the production build |
 | `npm run lint` | ESLint |
+| `npm run sync:previews` | Crop/optimize `assets/screenshots` → `public/images` |
 
 To ship on Cloudflare Workers (after a successful build), use your usual Wrangler deploy flow against this repo’s `wrangler.toml`.
 

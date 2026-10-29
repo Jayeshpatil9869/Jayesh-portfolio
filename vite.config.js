@@ -1,7 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from "@tailwindcss/vite";
-// https://vite.dev/config/
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const rootDir = path.dirname(fileURLToPath(import.meta.url));
 
 // Custom plugin to handle .glsl files
 function glslPlugin() {
@@ -27,7 +30,8 @@ export default defineConfig({
   plugins: [tailwindcss(), react(), glslPlugin()],
   resolve: {
     alias: {
-      "@": "/src",
+      // Must match tsconfig.app.json paths("@/*" -> "./src/*")
+      "@": path.resolve(rootDir, "src"),
     },
   },
   assetsInclude: ['**/*.glb'],

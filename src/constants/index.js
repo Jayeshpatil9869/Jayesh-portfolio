@@ -87,6 +87,7 @@ export const projects = [
     description:
       "Problem: Traditional bookmarking tools save raw URLs without visual context, making it impossible to remember why you saved them. Solution: Built an editorial visual URL library and personal knowledge archive with Next.js 16, React 19, Fastify 5, and Supabase/PostgreSQL. Features instant zero-registration URL parsing with automated OpenGraph metadata extraction, WebGL shader effects, calm 3D card interactions, and fast multi-attribute search across titles, domains, tags, and categories. Impact: Transformed URL hoarding into an intuitive personal archive with sub-100ms search and full PWA support.",
     href: "https://linknest.divinescode.com/",
+    github: "https://github.com/Jayeshpatil9869/LinkNest",
     image: "/images/linknest.png",
     bgImage: "/images/linknest.png",
     caseStudy: {
@@ -95,64 +96,71 @@ export const projects = [
       problem:
         "Traditional bookmarking tools save raw URLs without visual context, making it hard to remember why a link was saved.",
       solution:
-        "Built LinkNest with Next.js 16, React 19, Fastify 5, and Supabase/PostgreSQL — zero-registration URL parsing, OpenGraph extraction, WebGL/GSAP interactions, and multi-attribute search.",
+        "Built LinkNest with Next.js, React, TypeScript, Fastify, and Supabase/PostgreSQL — URL metadata extraction, search, category filtering, and PWA support.",
       impact:
-        "Turned URL hoarding into a searchable personal archive with fast search and full PWA support.",
+        "Turned URL hoarding into a searchable personal archive with visual bookmarks and multi-attribute search.",
     },
     frameworks: [
-      { id: 1, name: "Next.js 16" },
-      { id: 2, name: "React 19" },
-      { id: 3, name: "Fastify 5" },
-      { id: 4, name: "Supabase" },
-      { id: 5, name: "WebGL / GSAP" },
+      { id: 1, name: "Next.js" },
+      { id: 2, name: "React.js" },
+      { id: 3, name: "TypeScript" },
+      { id: 4, name: "Fastify" },
+      { id: 5, name: "Supabase" },
+      { id: 6, name: "Tailwind CSS" },
     ],
   },
   {
     id: 106,
     name: "VELORAA ROUGEE",
     description:
-      "Problem: Luxury cosmetics brands face inventory race conditions during flash drops and lost conversions from friction-heavy checkouts. Solution: Architected a full-stack luxury e-commerce platform and ERP with React 19, Fastify v5, and PostgreSQL/Supabase, featuring real-time inventory reservation, PayU SHA-512 cryptographic verification, anonymous-to-user cart merging, and a 60fps editorial UI with Lenis and GSAP. Impact: Eliminated overselling race conditions, guaranteed zero floating-point financial errors using integer-paise math, and achieved sub-100ms API response times.",
+      "Problem: Luxury cosmetics brands face inventory race conditions during flash drops and friction-heavy checkouts. Solution: Full-stack storefront and admin workflows with React, TypeScript, Fastify, PostgreSQL/Supabase, PayU payments, and an editorial UI with Lenis and GSAP. Impact: Safer inventory reservation and a smoother checkout path for the brand.",
     href: "https://veloraarougee.com/",
     image: "/images/veloraa-rougee.png",
     bgImage: "/images/veloraa-rougee.png",
     frameworks: [
-      { id: 1, name: "React 19" },
-      { id: 2, name: "Fastify v5" },
-      { id: 3, name: "PostgreSQL" },
-      { id: 4, name: "Tailwind CSS v4" },
-      { id: 5, name: "Lenis & GSAP" },
+      { id: 1, name: "React.js" },
+      { id: 2, name: "TypeScript" },
+      { id: 3, name: "Fastify" },
+      { id: 4, name: "PostgreSQL" },
+      { id: 5, name: "Tailwind CSS" },
+      { id: 6, name: "GSAP" },
     ],
   },
   {
     id: 105,
     name: "OneCapital Fintech Dashboard",
     description:
-      "Problem: Wealth managers wasted 15+ hours/week manually merging financial data across disparate platforms. Solution: Architected a highly scalable Next.js/Fastify monorepo that automates massive Excel data ingestion and provides role-based KPIs. Impact: Eliminated manual reporting, supercharged RM productivity, and earned an early full-time promotion.",
+      "Problem: Wealth teams relied on manual Excel merges across financial platforms. Solution: Next.js/Fastify monorepo with Excel ingestion, role-based KPIs, and PostgreSQL/Supabase. Impact: Centralized reporting for AUM, brokerage, and client analytics. Project work is listed separately from employment dates.",
     href: "#onecapital",
     internal: true,
     caseStudy: {
       id: "onecapital",
-      summary: "Internal wealth-management dashboard,\nbuilt to replace Excel-heavy reporting.",
-      problem: "Wealth managers wasted 15+ hours/week manually merging financial data across disparate platforms.",
+      summary:
+        "Internal wealth-management dashboard,\nbuilt to replace Excel-heavy reporting.\nEmployment dates live in Experience — not here.",
+      problem:
+        "Wealth teams manually merged financial data across disparate platforms and spreadsheets.",
       solution:
-        "Architected a highly scalable Next.js/Fastify monorepo that automates massive Excel data ingestion and provides role-based KPIs.",
-      impact: "Eliminated manual reporting, supercharged RM productivity, and earned an early full-time promotion.",
+        "Next.js/Fastify TypeScript monorepo with Excel/XLSX ingestion, validation, RBAC, and role-based KPI dashboards on PostgreSQL/Supabase.",
+      impact:
+        "Replaced fragmented Excel workflows with a centralized dashboard for business teams. Transitioned from internship into the full-time Software Developer role.",
     },
     image: "/images/One-Capital-Dashboard-1.png",
     bgImage: "/images/One-Capital-Dashboard-1.png",
     frameworks: [
-      { id: 1, name: "Next.js 16" },
-      { id: 2, name: "Fastify" },
-      { id: 3, name: "Turborepo" },
-      { id: 4, name: "Supabase" },
+      { id: 1, name: "Next.js" },
+      { id: 2, name: "TypeScript" },
+      { id: 3, name: "Fastify" },
+      { id: 4, name: "Turborepo" },
+      { id: 5, name: "PostgreSQL" },
+      { id: 6, name: "Supabase" },
     ],
   },
   {
     id: 104,
     name: "Gravitate",
     description:
-      "Problem: A traditional spice brand needed a digital-first approach to digitize sales. Solution: Built a high-performance Next.js platform with a bespoke WhatsApp-integrated ordering system. Impact: Created a low-friction checkout experience that directly increased conversions.",
-    href: "http://gravitatee.com",
+      "Problem: A traditional spice brand needed a digital-first path to take orders. Solution: Next.js storefront with TypeScript, Tailwind CSS, Supabase, and WhatsApp-integrated ordering. Impact: Lower-friction checkout for D2C sales.",
+    href: "https://gravitatee.com/",
     image: "/images/Gravitate_Masala.png",
     bgImage: "/images/Gravitate_Masala.png",
     caseStudy: {
@@ -161,14 +169,14 @@ export const projects = [
       problem:
         "A traditional spice brand needed a digital-first path to take orders without a heavy checkout funnel.",
       solution:
-        "Shipped a Next.js storefront with TypeScript, Tailwind, Supabase, and a WhatsApp-integrated ordering flow.",
+        "Shipped a Next.js storefront with TypeScript, Tailwind CSS, Supabase, and a WhatsApp-integrated ordering flow.",
       impact:
-        "Lowered purchase friction with a WhatsApp-first checkout path for conversions.",
+        "Lowered purchase friction with a WhatsApp-first checkout path.",
     },
     frameworks: [
       { id: 1, name: "Next.js" },
-      { id: 2, name: "Tailwind CSS" },
-      { id: 3, name: "TypeScript" },
+      { id: 2, name: "TypeScript" },
+      { id: 3, name: "Tailwind CSS" },
       { id: 4, name: "Supabase" },
     ],
   },
@@ -188,16 +196,15 @@ export const projects = [
   },
   {
     id: 101,
-    name: "Riyansh Ayurvedic E-Commerce",
+    name: "Riyansh Amrit — Ayurvedic E-Commerce",
     description:
-      "Problem: A wellness brand needed a robust online storefront. Solution: Developed a secure platform with product catalogs, bookings, and Cloudflare edge delivery. Impact: Achieved near-zero latency and seamless transactions.",
-    href: "https://www.riyanshamrit.com/",
+      "Premium Ayurvedic e-commerce storefront with product catalog, cart, wishlist, and consultation-oriented navigation. Built with React.js and Tailwind CSS.",
+    href: "https://riyanshamrit.com/",
     image: "/images/Riyansh-Ayurvedic-E-Commerce.jpg",
     bgImage: "/images/Riyansh-Ayurvedic-E-Commerce.jpg",
     frameworks: [
       { id: 1, name: "React.js" },
       { id: 2, name: "Tailwind CSS" },
-      { id: 3, name: "E-Commerce" },
     ],
   },
   {
@@ -217,8 +224,9 @@ export const projects = [
   {
     id: 1,
     name: "Yaseen Foundation",
+    hidden: true,
     description:
-      "Yaseen Global Foundation is a community-driven non-profit organization dedicated to uplifting underprivileged communities through education, healthcare, food distribution, and social welfare programs.",
+      "Non-profit organization site (currently withheld from the public Works list while the live domain is unavailable).",
     href: "https://www.yaseenglobalfoundation.in/",
     image: "/images/Yaseen-Foundation.jpg",
     bgImage: "/images/Yaseen-Foundation.jpg",
@@ -248,7 +256,7 @@ export const projects = [
     name: "Enhancify – AI Image Enhancer",
     practice: true,
     description:
-      "Problem: Users needed a fast, privacy-preserving tool to upscale images. Solution: Created a drag-and-drop React app featuring lazy loading and an AI processing API. Impact: Achieved a Lighthouse performance score of 95+ and delivered a smooth optimization experience.",
+      "Drag-and-drop React image enhancer with lazy loading and an AI processing API — a practice project focused on UI flow and performance habits.",
     href: "https://github.com/Jayeshpatil9869/image-enhancer",
     image: "/images/image-enhancer.jpg",
     bgImage: "/images/image-enhancer.jpg",
@@ -356,23 +364,30 @@ export const projects = [
   },
 ];
 
-export const featuredProjects = projects.filter((project) => !project.practice);
-export const practiceProjects = projects.filter((project) => project.practice);
-export const caseStudyProjects = projects.filter((project) => project.caseStudy);
+export const featuredProjects = projects.filter(
+  (project) => !project.practice && !project.hidden
+);
+export const practiceProjects = projects.filter(
+  (project) => project.practice && !project.hidden
+);
+export const caseStudyProjects = projects.filter(
+  (project) => project.caseStudy && !project.hidden
+);
 
 export const socials = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/jayeshpatilfs/" },
   { name: "GitHub", href: "https://github.com/Jayeshpatil9869" },
+  { name: "DEV Community", href: "https://dev.to/jayesh_patil" },
+  { name: "CodePen", href: "https://codepen.io/jayeshbpatil" },
+  { name: "Linktree", href: "https://linktr.ee/jayeshpatil1553" },
   { name: "WhatsApp", href: "https://wa.me/919209389015" },
-  { name: "Codepen", href: "https://codepen.io/jayeshpatil" },
   {
     name: "Instagram",
     href: "https://www.instagram.com/destination_diaries_15/",
   },
   {
-    name: "Youtube",
+    name: "YouTube",
     href: "https://www.youtube.com/@Rjarts9869",
   },
-  { name: "Twitter", href: "https://x.com/Jayeshpatil1553" },
-  { name: "Dev.to", href: "https://dev.to/jayesh_patil" },
+  { name: "X", href: "https://x.com/Jayeshpatil1553" },
 ];

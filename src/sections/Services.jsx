@@ -3,72 +3,9 @@ import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import { useMediaQuery } from "react-responsive";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { experienceData, experienceIntro } from "../constants/experience";
 
 const Experience = () => {
-  const text = `Working on fintech platforms, automated data pipelines,
-and internal systems focused on solving real
-operational problems.`;
-
-  const experienceData = [
-    {
-      title: "Software Developer (Full Stack)",
-      company: "OneCapital Investment Private Limited",
-      period: "Dec 2025 - Present",
-      type: "Pune, Maharashtra | On-site",
-      description:
-        "Architecting internal wealth management dashboards, financial analytics platforms, and automated data ingestion pipelines that eliminate manual operational bottlenecks.",
-      responsibilities: [
-        "Build and maintain internal wealth management dashboards for business teams, tracking AUM, brokerage, and real-time client KPIs",
-        "Implement drag-and-drop Excel/XLSX data ingestion, parsing, schema validation, and database insertion workflows (eliminating 15+ hours/week of manual work)",
-        "Design performant REST APIs using Node.js and Fastify with user-level data scoping and JWT authentication",
-        "Implement multi-tier role-based access control (RBAC) across employee, manager, and administrator permission levels",
-        "Develop inside a shared TypeScript monorepo using Turborepo and pnpm with reusable packages across frontend and backend services",
-      ],
-    },
-    {
-      title: "Full Stack Developer Intern",
-      company: "OneCapital Investment Private Limited",
-      period: "Oct 2025 - Dec 2025",
-      type: "Pune, Maharashtra | On-site",
-      description:
-        "Shipped dashboard features for financial reporting and contributed to migrating Excel-based workflows into a centralized application.",
-      responsibilities: [
-        "Shipped dashboard reporting features and multi-level data filtering across AAA and WealthMagic systems",
-        "Contributed to migrating manual Excel-based operations into a unified, high-performance web application",
-        "Developed modular React components, Next.js pages, and Supabase PostgreSQL database schemas",
-        "Contributed to REST API design, database architecture, testing, and production deployment, earning promotion to full-time Software Developer",
-      ],
-    },
-    {
-      title: "Freelance Full Stack Developer",
-      company: "Divines Code",
-      period: "Jun 2025 - Mar 2026",
-      type: "Nashik, Maharashtra | Hybrid",
-      description:
-        "Delivered more than five end-to-end full-stack projects for business clients, spanning e-commerce, SaaS dashboards, and agency platforms.",
-      responsibilities: [
-        "Delivered 5+ production-grade web applications from concept to deployment, including D2C e-commerce platforms and admin dashboards",
-        "Developed responsive, high-performance user interfaces using React, Next.js, and Tailwind CSS",
-        "Built secure REST APIs using Node.js and Express with JWT authentication and role-based permissions",
-        "Improved frontend performance through code splitting and image optimization, reducing page load times by ~25%",
-      ],
-    },
-    {
-      title: "Full Stack Developer Intern",
-      company: "Digi Mirai",
-      period: "Jan 2025 - May 2025",
-      type: "Malegaon, Maharashtra | On-site",
-      description:
-        "Worked across frontend and backend development to ship MERN-stack projects for commercial clients.",
-      responsibilities: [
-        "Shipped more than three MERN-stack client projects covering MongoDB schema design to deployed React frontends",
-        "Built reusable React.js UI component libraries and modular Node.js/Express APIs used across multiple client applications",
-        "Optimized MongoDB queries and database structures to improve API response times by ~20%",
-        "Participated in structured code reviews, collaborative Git branch workflows, and staged production rollouts",
-      ],
-    },
-  ];
-
   const experienceRefs = useRef([]);
   const isDesktop = useMediaQuery({ minWidth: "48rem" });
   const isTallEnough = useMediaQuery({ minHeight: "720px" });
@@ -97,7 +34,7 @@ operational problems.`;
       <AnimatedHeaderSection
         subTitle={"Professional Journey"}
         title={"Experience"}
-        text={text}
+        text={experienceIntro}
         textColor={"text-white"}
         withScrollTrigger={true}
         size="section"
@@ -106,35 +43,49 @@ operational problems.`;
       {experienceData.map((experience, index) => (
         <div
           ref={(el) => (experienceRefs.current[index] = el)}
-          key={index}
+          key={experience.id}
           className={`px-4 sm:px-10 pt-6 pb-12 text-white bg-black border-t-2 border-white/30 ${useSticky ? "sticky" : "relative"}`}
           style={
             useSticky
               ? {
-                top: `calc(10vh + ${index * 5}em)`,
-                marginBottom: `${(experienceData.length - index - 1) * 5}rem`,
-              }
+                  top: `calc(10vh + ${index * 5}em)`,
+                  marginBottom: `${(experienceData.length - index - 1) * 5}rem`,
+                }
               : undefined
           }
         >
           <div className="flex items-center justify-between gap-4 font-light">
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 min-w-0 w-full">
               <div className="flex flex-col gap-2">
-                <h3 className="text-2xl sm:text-4xl lg:text-5xl text-balance">{experience.title}</h3>
-                <p className="text-lg sm:text-2xl text-white/80 text-balance">{experience.company}</p>
-                <p className="text-base sm:text-xl text-white/60 text-balance">{`${experience.period} | ${experience.type}`}</p>
+                <h3 className="text-2xl sm:text-4xl lg:text-5xl text-balance">
+                  {experience.title}
+                </h3>
+                <p className="text-lg sm:text-2xl text-white/80 text-balance">
+                  {experience.company}
+                </p>
+                <p className="text-sm sm:text-base uppercase tracking-wider text-white/50">
+                  {experience.employmentType}
+                </p>
+                <p className="text-base sm:text-xl text-white/60 text-balance break-words">
+                  {`${experience.period} | ${experience.type}`}
+                </p>
+                {experience.note ? (
+                  <p className="text-sm sm:text-base text-white/45 text-pretty max-w-3xl">
+                    {experience.note}
+                  </p>
+                ) : null}
               </div>
               <p className="text-base sm:text-xl leading-relaxed tracking-normal sm:tracking-wide lg:text-2xl text-white/60 text-pretty">
                 {experience.description}
               </p>
               <div className="flex flex-col gap-2 text-base sm:text-2xl sm:gap-4 lg:text-3xl text-white/80 min-w-0">
                 {experience.responsibilities.map((responsibility, itemIndex) => (
-                  <div key={`item-${index}-${itemIndex}`}>
+                  <div key={`${experience.id}-${itemIndex}`}>
                     <p className="flex gap-4 sm:gap-8 text-pretty min-w-0">
                       <span className="shrink-0 text-lg text-white/30">
                         0{itemIndex + 1}
                       </span>
-                      {responsibility}
+                      <span className="min-w-0">{responsibility}</span>
                     </p>
                     {itemIndex < experience.responsibilities.length - 1 && (
                       <div className="w-full h-px my-2 bg-white/30" />

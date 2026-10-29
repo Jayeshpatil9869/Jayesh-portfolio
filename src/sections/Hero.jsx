@@ -41,9 +41,9 @@ const Hero = () => {
     document.getElementById(sectionId)?.scrollIntoView();
   };
 
-  const text = `Building Premium Scalable SaaS Platforms &
-Performance-First Web Applications.
-React.js · Node.js · MongoDB · System Architecture`;
+  const text = `Production web apps, SaaS, fintech dashboards,
+and e-commerce — built end to end.
+React.js · Next.js · TypeScript · Node.js · Fastify · PostgreSQL · Supabase`;
 
   return (
     <section ref={ref} id="home" className="flex flex-col justify-end min-h-screen">
@@ -52,7 +52,7 @@ React.js · Node.js · MongoDB · System Architecture`;
         isMobile={isMobile}
         heading="h1"
         size="display"
-        subTitle={"Full Stack MERN Developer"}
+        subTitle={"Full Stack Developer"}
         title={"Jayesh Patil"}
         text={text}
         textColor={"text-black"}

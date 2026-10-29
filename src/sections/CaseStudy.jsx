@@ -63,7 +63,7 @@ const CaseStudy = () => {
                   <li key={framework.id}>{framework.name}</li>
                 ))}
               </ul>
-              <div className="px-4 sm:px-10">
+              <div className="flex flex-wrap gap-6 px-4 sm:px-10">
                 {study.internal ? (
                   <p className="text-sm font-light text-black/70">
                     Internal company system. There is no public demo or source link.
@@ -78,6 +78,16 @@ const CaseStudy = () => {
                     Open live project
                   </a>
                 )}
+                {study.github ? (
+                  <a
+                    href={study.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex text-sm uppercase tracking-widest border-b border-black pb-0.5 hover:text-[#6b4e16] hover:border-[#6b4e16] transition-colors cursor-hover"
+                  >
+                    View source
+                  </a>
+                ) : null}
               </div>
             </article>
           );

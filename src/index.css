@@ -99,10 +99,15 @@
   --font-spartan: "Spartan", sans-serif;
 }
 
+html {
+  /* Off-canvas nav sits translated off-screen; keep it from expanding page width. */
+  overflow-x: clip;
+}
+
 body {
   background: #d6d6d6;
   color: black;
-  overflow-x: hidden;
+  overflow-x: clip;
   font-family: var(--font-amiamie);
   /* Keep default cursor visible as requested by user */
 }
