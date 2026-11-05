@@ -63,9 +63,9 @@ export const experienceData = [
     period: "February 2025 – June 2025",
     type: "Malegaon, Maharashtra | On-site",
     description:
-      "Worked across frontend and backend on MERN-stack projects for commercial clients.",
+      "Worked across frontend and backend on production web apps for commercial clients, using React on the client and Node.js/Express with MongoDB on the server.",
     responsibilities: [
-      "Shipped MERN-stack client work from MongoDB schema design through React frontends",
+      "Shipped client projects from MongoDB schema design through React frontends",
       "Built reusable React components and modular Node.js/Express APIs",
       "Participated in testing, debugging, Git workflows, and staged rollouts",
     ],

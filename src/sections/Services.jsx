@@ -4,8 +4,11 @@ import RevealLines from "../components/RevealLines";
 import { useMediaQuery } from "react-responsive";
 import { experienceData, experienceIntro } from "../constants/experience";
 
-/** Peek offset between stacked sticky cards (must match `top` step). */
-const STACK_STEP_EM = 5;
+/**
+ * Peek offset between stacked sticky cards (must match `top` step).
+ * Sized so company + role title stay readable in the peek band.
+ */
+const STACK_STEP_EM = 7;
 /**
  * End-of-section runway (real box, not padding).
  * Sticky constraint follows the parent's content size; padding alone does not
@@ -50,14 +53,14 @@ const Experience = () => {
                 <div className="flex flex-col gap-6 min-w-0 w-full">
                   <div className="flex flex-col gap-2">
                     <RevealLines
-                      as="h3"
-                      lines={[experience.title]}
-                      className="text-2xl sm:text-4xl lg:text-5xl text-balance"
-                    />
-                    <RevealLines
                       as="p"
                       lines={[experience.company]}
                       className="text-lg sm:text-2xl text-white/80 text-balance"
+                    />
+                    <RevealLines
+                      as="h3"
+                      lines={[experience.title]}
+                      className="text-2xl sm:text-4xl lg:text-5xl text-balance"
                     />
                     <p className="text-sm sm:text-base uppercase tracking-wider text-white/50">
                       {experience.employmentType}

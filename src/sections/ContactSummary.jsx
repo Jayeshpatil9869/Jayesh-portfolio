@@ -85,10 +85,10 @@ const ContactSummary = () => {
       <Marquee items={items} className="text-white bg-black w-full shrink-0" />
       <div className="overflow-hidden px-4 font-light text-center contact-text-responsive flex-1 flex items-center justify-center">
         <p>
-          “ Let’s build a <br />
-          <span className="font-normal">memorable</span> &{" "}
-          <span className="italic">inspiring</span> <br />
-          web application <span className="text-[#6b4e16]">together</span> “
+          Open to full-time roles, <br />
+          freelance work, and <br />
+          <span className="font-normal">thoughtful collaborations</span>
+          <span className="text-[#6b4e16]">.</span>
         </p>
       </div>
       <Marquee
