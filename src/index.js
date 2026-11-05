@@ -23,11 +23,13 @@ export default {
     const indexResponse = await env.ASSETS.fetch(indexRequest);
 
     if (indexResponse.status !== 404) {
+      // Unknown paths still serve the SPA shell, but with a real 404 status
+      // so soft-404 crawl signals are honest (hash routes never hit this).
       const headers = new Headers(indexResponse.headers);
       headers.set("Content-Type", "text/html; charset=utf-8");
       return new Response(indexResponse.body, {
-        status: 200,
-        statusText: indexResponse.statusText,
+        status: 404,
+        statusText: "Not Found",
         headers,
       });
     }

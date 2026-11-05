@@ -80,7 +80,7 @@ React.js · Next.js · TypeScript · Node.js · Fastify · PostgreSQL · Supabas
           Contact
         </a>
       </div>
-      <div className="absolute inset-0 -z-50 w-screen h-screen">
+      <div className="absolute inset-0 -z-50 w-full h-full min-h-[100dvh]">
         {showBackground && (
           <Suspense fallback={null}>
             <LazyEtheralShadow

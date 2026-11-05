@@ -85,7 +85,7 @@ export const projects = [
     id: 107,
     name: "LinkNest",
     description:
-      "Problem: Traditional bookmarking tools save raw URLs without visual context, making it impossible to remember why you saved them. Solution: Built an editorial visual URL library and personal knowledge archive with Next.js 16, React 19, Fastify 5, and Supabase/PostgreSQL. Features instant zero-registration URL parsing with automated OpenGraph metadata extraction, WebGL shader effects, calm 3D card interactions, and fast multi-attribute search across titles, domains, tags, and categories. Impact: Transformed URL hoarding into an intuitive personal archive with sub-100ms search and full PWA support.",
+      "Visual bookmark manager with URL metadata extraction, category filters, search, duplicate-link detection, and PWA support. Built with Next.js, React, TypeScript, Fastify, and Supabase/PostgreSQL.",
     href: "https://linknest.divinescode.com/",
     github: "https://github.com/Jayeshpatil9869/LinkNest",
     image: "/images/linknest.png",
@@ -140,9 +140,9 @@ export const projects = [
       problem:
         "Wealth teams manually merged financial data across disparate platforms and spreadsheets.",
       solution:
-        "Next.js/Fastify TypeScript monorepo with Excel/XLSX ingestion, validation, RBAC, and role-based KPI dashboards on PostgreSQL/Supabase.",
+        "Next.js/Fastify TypeScript monorepo with Excel/XLSX ingestion, validation, and permission-aware KPI dashboards on PostgreSQL/Supabase.",
       impact:
-        "Replaced fragmented Excel workflows with a centralized dashboard for business teams. Transitioned from internship into the full-time Software Developer role.",
+        "Replaced fragmented Excel workflows with a centralized dashboard for business teams. Internship began September 2025; full-time Software Developer role from March 2026 (see Experience).",
     },
     image: "/images/One-Capital-Dashboard-1.png",
     bgImage: "/images/One-Capital-Dashboard-1.png",
@@ -184,14 +184,15 @@ export const projects = [
     id: 102,
     name: "Divines Code",
     description:
-      "Divines Code is a modern digital marketing and development agency website designed to help startups grow their online presence. The platform highlights services such as branding, digital marketing strategies.",
+      "Agency marketing site for Divines Code — React/Vite SPA with edge delivery on Cloudflare Workers, focused on performance and clear service storytelling.",
     href: "https://divinescode.com/",
     image: "/images/divines-code.png",
     bgImage: "/images/divines-code.png",
     frameworks: [
-      { id: 1, name: "HTML" },
-      { id: 2, name: "CSS" },
-      { id: 3, name: "JavaScript" },
+      { id: 1, name: "React.js" },
+      { id: 2, name: "Vite" },
+      { id: 3, name: "Cloudflare Workers" },
+      { id: 4, name: "Tailwind CSS" },
     ],
   },
   {
@@ -374,20 +375,11 @@ export const caseStudyProjects = projects.filter(
   (project) => project.caseStudy && !project.hidden
 );
 
+/** Primary recruiter-facing links shown in Contact / nav. */
 export const socials = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/jayeshpatilfs/" },
   { name: "GitHub", href: "https://github.com/Jayeshpatil9869" },
   { name: "DEV Community", href: "https://dev.to/jayesh_patil" },
   { name: "CodePen", href: "https://codepen.io/jayeshbpatil" },
-  { name: "Linktree", href: "https://linktr.ee/jayeshpatil1553" },
   { name: "WhatsApp", href: "https://wa.me/919209389015" },
-  {
-    name: "Instagram",
-    href: "https://www.instagram.com/destination_diaries_15/",
-  },
-  {
-    name: "YouTube",
-    href: "https://www.youtube.com/@Rjarts9869",
-  },
-  { name: "X", href: "https://x.com/Jayeshpatil1553" },
 ];

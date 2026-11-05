@@ -7,8 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 /**
  * ScrollFillText
- * Splits text into paragraphs, words, and characters to produce
- * a cinematic scroll-scrubbed text filling / reveal animation with GSAP.
+ * Word-level scroll-scrubbed fill (fewer DOM nodes than per-character splits).
+ * Decorative spans are aria-hidden; full copy is exposed via sr-only text.
  */
 export const ScrollFillText = ({
   text,
@@ -17,28 +17,29 @@ export const ScrollFillText = ({
 }) => {
   const containerRef = useRef(null);
 
-  // Split into paragraphs by double newlines or empty lines
   const paragraphs = text
     .split(/\n\s*\n/)
     .map((p) => p.trim())
     .filter(Boolean);
 
+  const accessibleText = paragraphs.join(" ");
+
   useGSAP(
     () => {
-      const chars = containerRef.current?.querySelectorAll(".scroll-fill-char");
-      if (!chars || chars.length === 0) return;
+      const words = containerRef.current?.querySelectorAll(".scroll-fill-word");
+      if (!words || words.length === 0) return;
 
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) {
-        gsap.set(chars, { color: "#ffffff" });
+        gsap.set(words, { color: "#ffffff" });
         return;
       }
 
-      gsap.set(chars, { color: "rgba(255, 255, 255, 0.2)" });
+      gsap.set(words, { color: "rgba(255, 255, 255, 0.2)" });
 
-      gsap.to(chars, {
+      gsap.to(words, {
         color: "#ffffff",
-        stagger: 0.1,
+        stagger: 0.04,
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -53,37 +54,30 @@ export const ScrollFillText = ({
 
   return (
     <div ref={containerRef} className={className}>
-      {paragraphs.map((paragraph, pIdx) => {
-        const words = paragraph.split(/\s+/);
-        return (
-          <p
-            key={pIdx}
-            className={`leading-relaxed tracking-wide text-pretty ${paragraphClassName}`}
-          >
-            {words.map((word, wIdx) => (
-              <span key={wIdx} className="inline-block whitespace-nowrap">
-                {word.split("").map((char, cIdx) => (
+      <p className="sr-only">{accessibleText}</p>
+      <div aria-hidden="true">
+        {paragraphs.map((paragraph, pIdx) => {
+          const words = paragraph.split(/\s+/);
+          return (
+            <p
+              key={pIdx}
+              className={`leading-relaxed tracking-wide text-pretty ${paragraphClassName}`}
+            >
+              {words.map((word, wIdx) => (
+                <span key={wIdx} className="inline">
                   <span
-                    key={cIdx}
-                    className="scroll-fill-char inline-block will-change-[color]"
+                    className="scroll-fill-word"
                     style={{ color: "rgba(255, 255, 255, 0.2)" }}
                   >
-                    {char}
+                    {word}
                   </span>
-                ))}
-                {wIdx < words.length - 1 && (
-                  <span
-                    className="scroll-fill-char inline-block will-change-[color]"
-                    style={{ color: "rgba(255, 255, 255, 0.2)" }}
-                  >
-                    &nbsp;
-                  </span>
-                )}
-              </span>
-            ))}
-          </p>
-        );
-      })}
+                  {wIdx < words.length - 1 ? " " : null}
+                </span>
+              ))}
+            </p>
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
+import RevealLines from "../components/RevealLines";
 import { caseStudyProjects } from "../constants";
 
 const CaseStudy = () => {
@@ -22,6 +23,10 @@ const CaseStudy = () => {
             { label: "Solution", body: solution },
             { label: "Impact", body: impact },
           ];
+          const summaryLines = String(summary)
+            .split("\n")
+            .map((line) => line.trim())
+            .filter(Boolean);
 
           return (
             <article
@@ -33,12 +38,17 @@ const CaseStudy = () => {
                 <p className="section-kicker text-sm uppercase font-light text-black/60">
                   Case study
                 </p>
-                <h3 className="mt-2 text-2xl font-light tracking-tight sm:text-3xl md:text-4xl text-balance">
-                  {study.name}
-                </h3>
-                <p className="mt-3 max-w-2xl text-lg font-light leading-relaxed text-black/80 whitespace-pre-line">
-                  {summary}
-                </p>
+                <RevealLines
+                  as="h3"
+                  lines={[study.name]}
+                  className="mt-2 text-2xl font-light tracking-tight sm:text-3xl md:text-4xl text-balance"
+                />
+                <RevealLines
+                  as="div"
+                  lines={summaryLines}
+                  className="mt-3 max-w-2xl text-lg font-light leading-relaxed text-black/80"
+                  stagger={0.1}
+                />
               </div>
               <div className="grid gap-10 px-4 sm:px-10 md:grid-cols-3 md:gap-12">
                 {columns.map((column) => (
@@ -49,9 +59,11 @@ const CaseStudy = () => {
                     <h4 className="section-kicker text-sm uppercase font-light">
                       {column.label}
                     </h4>
-                    <p className="text-lg font-light leading-relaxed sm:text-xl text-pretty">
-                      {column.body}
-                    </p>
+                    <RevealLines
+                      as="p"
+                      lines={[column.body]}
+                      className="text-lg font-light leading-relaxed sm:text-xl text-pretty"
+                    />
                   </div>
                 ))}
               </div>

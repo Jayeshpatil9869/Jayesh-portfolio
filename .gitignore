@@ -32,3 +32,14 @@ dist-ssr
 
 # TypeScript incremental build info
 *.tsbuildinfo
+
+# Personal LinkedIn / profile exports (keep local, do not publish)
+docs/Profile (10).*
+**/Profile (10).*
+
+# Local agent / debug captures (do not publish)
+cs-*.png
+**/experience-sticky*.png
+PORTFOLIO_AUDIT.md
+PORTFOLIO_CHANGELOG.md
+PORTFOLIO_IMPLEMENTATION_PLAN.md

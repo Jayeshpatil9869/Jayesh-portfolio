@@ -1,5 +1,6 @@
 import { Icon } from "../lib/icons";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
+import RevealLines from "../components/RevealLines";
 import { featuredProjects, practiceProjects } from "../constants";
 import { useRef, useState } from "react";
 import gsap from "gsap";
@@ -33,22 +34,24 @@ const Works = () => {
       duration: 2,
       ease: "power3.out",
     });
-
-    gsap.from(".project-item", {
-      y: 100,
-      opacity: 0,
-      delay: 0.5,
-      duration: 1,
-      stagger: 0.3,
-      ease: "back.out",
-      scrollTrigger: {
-        trigger: ".project-item",
-      },
-    });
   }, []);
+
+  const projectSummary = (project) => {
+    if (project.caseStudy?.summary) {
+      return project.caseStudy.summary.replace(/\n+/g, " ").trim();
+    }
+    if (!project.description) return null;
+    const cleaned = project.description
+      .replace(/\bsub-100ms\b/gi, "")
+      .replace(/\s{2,}/g, " ")
+      .trim();
+    const first = cleaned.split(/(?<=\.)\s+/)[0];
+    return first.length > 160 ? `${first.slice(0, 157)}…` : first;
+  };
 
   const handleMouseEnter = (index) => {
     if (window.innerWidth < 768) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setCurrentIndex(index);
 
     const el = overlayRefs.current[index];
@@ -115,72 +118,85 @@ const Works = () => {
     moveY.current(mouse.current.y);
   };
 
-  const renderProject = (project, index) => (
-    <a
-      key={project.id}
-      href={project.href}
-      target={project.internal ? undefined : "_blank"}
-      rel={project.internal ? undefined : "noopener noreferrer"}
-      className="relative flex flex-col gap-1 py-5 cursor-pointer project-item group md:gap-0 cursor-hover"
-      onMouseEnter={() => handleMouseEnter(index)}
-      onMouseLeave={() => handleMouseLeave(index)}
-      onClick={
-        project.internal
-          ? (e) => handleInternalLink(e, project.href)
-          : undefined
-      }
-      aria-label={
-        project.internal
-          ? `Read case study: ${project.name}`
-          : `View project ${project.name}`
-      }
-    >
-      <div
-        ref={(el) => {
-          overlayRefs.current[index] = el;
-        }}
-        className="absolute inset-0 hidden md:block duration-200 bg-black -z-10 clip-path"
-      />
+  const renderProject = (project, index) => {
+    const summary = !project.practice ? projectSummary(project) : null;
 
-      <div className="flex justify-between gap-4 px-4 sm:px-10 text-black transition-all duration-500 md:group-hover:px-12 md:group-hover:text-white">
-        <h2 className="min-w-0 text-xl sm:text-[26px] lg:text-[32px] leading-tight text-balance">
-          {project.name}
-        </h2>
-        <Icon
-          icon="lucide:arrow-up-right"
-          className="md:size-6 size-5 shrink-0"
-          aria-hidden="true"
+    return (
+      <a
+        key={project.id}
+        href={project.href}
+        target={project.internal ? undefined : "_blank"}
+        rel={project.internal ? undefined : "noopener noreferrer"}
+        className="relative flex flex-col gap-1 py-5 cursor-pointer project-item group md:gap-0 cursor-hover"
+        onMouseEnter={() => handleMouseEnter(index)}
+        onMouseLeave={() => handleMouseLeave(index)}
+        onClick={
+          project.internal
+            ? (e) => handleInternalLink(e, project.href)
+            : undefined
+        }
+        aria-label={
+          project.internal
+            ? `Read case study: ${project.name}`
+            : `View project ${project.name}`
+        }
+      >
+        <div
+          ref={(el) => {
+            overlayRefs.current[index] = el;
+          }}
+          className="absolute inset-0 hidden md:block duration-200 bg-black -z-10 clip-path"
         />
-      </div>
-      <div className="w-full h-0.5 bg-black/80" />
-      <div className="flex flex-wrap px-4 sm:px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
-        {project.caseStudy && !project.internal ? (
-          <p className="text-black/60 transition-colors duration-500 md:group-hover:text-white/70">
-            Case study below
-          </p>
-        ) : null}
-        {project.frameworks.map((framework) => (
-          <p
-            key={framework.id}
-            className="text-black transition-colors duration-500 md:group-hover:text-white"
-          >
-            {framework.name}
-          </p>
-        ))}
-      </div>
-      <div className="relative px-4 sm:px-10 md:hidden">
-        <div className="relative w-full aspect-[16/10]">
-          <ProjectPicture
-            src={project.image}
-            alt={`${project.name} preview`}
-            className="object-cover w-full h-full rounded-md"
-            width="800"
-            height="500"
+
+        <div className="flex justify-between gap-4 px-4 sm:px-10 text-black transition-all duration-500 md:group-hover:px-12 md:group-hover:text-white">
+          <RevealLines
+            as="h3"
+            lines={[project.name]}
+            className="min-w-0 text-xl sm:text-[26px] lg:text-[32px] leading-tight text-balance font-normal"
+          />
+          <Icon
+            icon="lucide:arrow-up-right"
+            className="md:size-6 size-5 shrink-0"
+            aria-hidden="true"
           />
         </div>
-      </div>
-    </a>
-  );
+        <div className="w-full h-0.5 bg-black/80" />
+        {summary ? (
+          <RevealLines
+            as="p"
+            lines={[summary]}
+            className="px-4 sm:px-10 pt-2 max-w-3xl text-sm sm:text-base font-light normal-case tracking-normal text-black/70 transition-all duration-500 md:group-hover:px-12 md:group-hover:text-white/75 text-pretty"
+          />
+        ) : null}
+        <div className="flex flex-wrap px-4 sm:px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
+          {project.caseStudy && !project.internal ? (
+            <p className="text-black/60 transition-colors duration-500 md:group-hover:text-white/70">
+              Case study below
+            </p>
+          ) : null}
+          {project.frameworks.map((framework) => (
+            <p
+              key={framework.id}
+              className="text-black transition-colors duration-500 md:group-hover:text-white"
+            >
+              {framework.name}
+            </p>
+          ))}
+        </div>
+        <div className="relative px-4 sm:px-10 md:hidden">
+          <div className="relative w-full aspect-[16/10]">
+            <ProjectPicture
+              src={project.image}
+              alt={`${project.name} preview`}
+              className="object-cover w-full h-full rounded-md"
+              width="800"
+              height="500"
+            />
+          </div>
+        </div>
+      </a>
+    );
+  };
 
   return (
     <section id="work" className="flex flex-col min-h-screen">
@@ -205,10 +221,13 @@ const Works = () => {
               <p className="section-kicker text-sm uppercase font-light text-black/50">
                 Practice & clones
               </p>
-              <p className="mt-2 max-w-xl text-base font-light text-black/70">
-                Front-end studies and recreations. Useful for craft — not client
-                deliverables.
-              </p>
+              <RevealLines
+                as="p"
+                lines={[
+                  "Front-end studies and recreations. Useful for craft — not client deliverables.",
+                ]}
+                className="mt-2 max-w-xl text-base font-light text-black/70"
+              />
             </div>
             {practiceProjects.map((project, index) =>
               renderProject(project, featuredProjects.length + index)

@@ -25,14 +25,24 @@ const AnimatedHeaderSection = ({
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
 
+    // Hero (no ScrollTrigger): keep LCP text near its final place — especially on mobile.
+    const isHeroIntro = !withScrollTrigger;
+    const fromY = isHeroIntro ? (isMobile ? 20 : "12vh") : "50vh";
+    const headerFromY = isHeroIntro ? (isMobile ? 12 : 48) : 200;
+    const duration = isHeroIntro && isMobile ? 0.55 : 1;
+
     const tl = gsap.timeline({
       delay: isMobile ? 0.1 : 0,
       scrollTrigger: withScrollTrigger
         ? { trigger: contextRef.current }
         : undefined,
     });
-    tl.from(contextRef.current, { y: "50vh", duration: 1, ease: "circ.out" });
-    tl.from(headerRef.current, { autoAlpha: 0, y: 200, duration: 1, ease: "circ.out" }, "<+0.1");
+    tl.from(contextRef.current, { y: fromY, duration, ease: "circ.out" });
+    tl.from(
+      headerRef.current,
+      { autoAlpha: 0, y: headerFromY, duration, ease: "circ.out" },
+      "<+0.1"
+    );
   }, [isMobile, withScrollTrigger]);
 
   return (

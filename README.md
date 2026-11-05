@@ -13,8 +13,9 @@ I’m based in Pune and work across React, Next.js, Node, Fastify, Supabase, and
 | Section | Purpose |
 | --- | --- |
 | **Hero** | Name, positioning, and quick paths into work or contact |
-| **Experience** | Digi Mirai → Divines Code (intern + freelance overlap) → OneCapital intern → full-time |
-| **Education** | BCA completed (SPPU); MCA in progress (SPPU) |
+| **Experience** | Digi Mirai intern → Divines Code freelance → OneCapital intern → OneCapital full-time |
+| **Education** | BCA (SPPU); NareshIT .NET training; MCA in progress (SPPU) |
+| **Skills** | Languages, frontend, backend/APIs, data, and tooling |
 | **About** | Short story of how I build — systems, not just screens |
 | **Works** | Production projects first; practice/clones grouped separately |
 | **Case studies** | Problem → solution → impact for selected work (OneCapital, LinkNest, Gravitate) |
