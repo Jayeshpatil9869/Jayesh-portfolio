@@ -41,13 +41,13 @@ export const experienceData = [
   },
   {
     id: "divines-freelance",
-    title: "Full Stack Developer (Freelance)",
+    title: "Full Stack Developer",
     company: "Divines Code",
     employmentType: "Freelance",
     period: "August 2025 – Present",
     type: "Nashik, Maharashtra | Hybrid",
     description:
-      "Delivered full-stack client websites and applications spanning e-commerce, booking systems, dashboards, and business sites.",
+      "Delivered full-stack client websites and applications spanning e-commerce, booking systems, dashboards, and business sites. Ongoing alongside OneCapital employment.",
     responsibilities: [
       "Shipped production web applications for business clients end to end",
       "Built responsive frontends with React, Next.js, and Tailwind CSS",
@@ -57,7 +57,7 @@ export const experienceData = [
   },
   {
     id: "digimirai-intern",
-    title: "Full Stack Developer Intern",
+    title: "Full Stack Developer Intern (MERN Stack)",
     company: "Digi Mirai",
     employmentType: "Internship",
     period: "February 2025 – June 2025",
@@ -78,8 +78,7 @@ export const educationData = [
     degree: "Master of Computer Applications (MCA)",
     institution: "Savitribai Phule Pune University",
     period: "May 2025 – Present",
-    status: "In progress",
-    expected: "Expected graduation 2027",
+    status: "Ongoing",
     kind: "Degree",
   },
   {

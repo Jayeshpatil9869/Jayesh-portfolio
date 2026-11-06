@@ -85,7 +85,7 @@ export const projects = [
     id: 107,
     name: "LinkNest",
     description:
-      "Visual bookmark manager with URL metadata extraction, category filters, search, duplicate-link detection, and PWA support. Built with Next.js, React, TypeScript, Fastify, and Supabase/PostgreSQL.",
+      "Visual bookmark manager with URL capture, metadata extraction, visual bookmark cards, category filters, search, duplicate detection, custom cover images, and PWA support. Built with Next.js, React, TypeScript, Fastify, and Supabase/PostgreSQL.",
     href: "https://linknest.divinescode.com/",
     github: "https://github.com/Jayeshpatil9869/LinkNest",
     image: "/images/linknest.png",
@@ -96,7 +96,7 @@ export const projects = [
       problem:
         "Traditional bookmarking tools save raw URLs without visual context, making it hard to remember why a link was saved.",
       solution:
-        "Built LinkNest with Next.js, React, TypeScript, Fastify, and Supabase/PostgreSQL — URL metadata extraction, search, category filtering, and PWA support.",
+        "Built LinkNest with Next.js, React, TypeScript, Fastify, and Supabase/PostgreSQL — URL capture, metadata extraction, visual cards, category filters, search, duplicate detection, custom cover images, and PWA support.",
       impact:
         "Turned URL hoarding into a searchable personal archive with visual bookmarks and multi-attribute search.",
     },
@@ -128,9 +128,9 @@ export const projects = [
   },
   {
     id: 105,
-    name: "OneCapital Fintech Dashboard",
+    name: "OneCapital — Wealth Management Dashboard",
     description:
-      "Problem: Wealth teams relied on manual Excel merges across financial platforms. Solution: Next.js/Fastify monorepo with Excel ingestion, role-based KPIs, and PostgreSQL/Supabase. Impact: Centralized reporting for AUM, brokerage, and client analytics. Project work is listed separately from employment dates.",
+      "Internal wealth management and financial analytics platform with dashboards, Excel/CSV ingestion and validation, AUM/brokerage/SIP/client analytics, backend APIs, role-based access, and PostgreSQL/Supabase data operations. Project details are listed separately from employment dates.",
     href: "#onecapital",
     internal: true,
     caseStudy: {
@@ -138,11 +138,11 @@ export const projects = [
       summary:
         "Internal wealth-management dashboard,\nbuilt to replace Excel-heavy reporting.\nEmployment dates live in Experience — not here.",
       problem:
-        "Wealth teams manually merged financial data across disparate platforms and spreadsheets.",
+        "Business teams relied on fragmented spreadsheets and manual merges for wealth and client reporting.",
       solution:
-        "Next.js/Fastify TypeScript monorepo with Excel/XLSX ingestion, validation, and permission-aware KPI dashboards on PostgreSQL/Supabase.",
+        "Collaborative full-stack delivery of dashboards and analytics with Excel/CSV ingestion and validation, backend APIs, role-based access, and PostgreSQL/Supabase data operations for AUM, brokerage, SIP, and client metrics.",
       impact:
-        "Replaced fragmented Excel workflows with a centralized dashboard for business teams. Internship began September 2025; full-time Software Developer role from March 2026 (see Experience).",
+        "Centralized financial reporting workflows into one internal web application for business teams.",
     },
     image: "/images/One-Capital-Dashboard-1.png",
     bgImage: "/images/One-Capital-Dashboard-1.png",
@@ -157,21 +157,21 @@ export const projects = [
   },
   {
     id: 104,
-    name: "Gravitate",
+    name: "Gravitate Masala",
     description:
-      "Problem: A traditional spice brand needed a digital-first path to take orders. Solution: Next.js storefront with TypeScript, Tailwind CSS, Supabase, and WhatsApp-integrated ordering. Impact: Lower-friction checkout for D2C sales.",
+      "Spice e-commerce storefront with product catalogue, product variants, dynamic pricing, cart, structured WhatsApp checkout, and product/inventory administration. Built with Next.js, TypeScript, Tailwind CSS, and Supabase.",
     href: "https://gravitatee.com/",
     image: "/images/Gravitate_Masala.png",
     bgImage: "/images/Gravitate_Masala.png",
     caseStudy: {
       id: "gravitate",
-      summary: "D2C storefront for a spice brand with WhatsApp ordering.",
+      summary: "D2C spice storefront with catalogue, cart, and WhatsApp checkout.",
       problem:
         "A traditional spice brand needed a digital-first path to take orders without a heavy checkout funnel.",
       solution:
-        "Shipped a Next.js storefront with TypeScript, Tailwind CSS, Supabase, and a WhatsApp-integrated ordering flow.",
+        "Shipped a Next.js storefront with TypeScript, Tailwind CSS, and Supabase — product catalogue and variants, dynamic pricing, cart, structured WhatsApp checkout, and product/inventory administration.",
       impact:
-        "Lowered purchase friction with a WhatsApp-first checkout path.",
+        "Lowered purchase friction with a WhatsApp-first checkout path for D2C orders.",
     },
     frameworks: [
       { id: 1, name: "Next.js" },

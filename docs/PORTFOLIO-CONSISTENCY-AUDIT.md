@@ -1,5 +1,7 @@
 # Portfolio Consistency Audit — Phase 1 (inspection only)
 
+> **Superseded for timeline decisions (5–6 Nov 2026):** Confirmed career dates now live in `src/constants/experience.js`. Do **not** apply the Oct 2026 “intended” Jul 2026 OneCapital dates or Divines internship guidance from this document.
+
 **Subject:** https://jayeshbpatil.com/  
 **Repo:** `Jayesh-portfolio` (local workspace)  
 **Audit date:** 29 October 2026  

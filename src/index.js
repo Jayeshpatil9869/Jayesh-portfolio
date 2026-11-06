@@ -9,6 +9,16 @@
 
 export default {
   async fetch(request, env) {
+    const url = new URL(request.url);
+
+    // Legacy path sometimes indexed by search engines — keep one canonical homepage.
+    if (url.pathname === "/home" || url.pathname === "/home/") {
+      url.pathname = "/";
+      url.search = "";
+      url.hash = "";
+      return Response.redirect(url.toString(), 301);
+    }
+
     const response = await env.ASSETS.fetch(request);
 
     if (response.status !== 404) {

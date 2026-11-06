@@ -18,7 +18,7 @@ I’m based in Pune and work across React, Next.js, Node, Fastify, Supabase, and
 | **Skills** | Languages, frontend, backend/APIs, data, and tooling |
 | **About** | Short story of how I build — systems, not just screens |
 | **Works** | Production projects first; practice/clones grouped separately |
-| **Case studies** | Problem → solution → impact for selected work (OneCapital, LinkNest, Gravitate) |
+| **Case studies** | Problem → solution → impact for selected work (OneCapital, LinkNest, Gravitate Masala) |
 | **Resume** | View / download PDF |
 | **Contact** | Email, phone, WhatsApp, and socials |
 
